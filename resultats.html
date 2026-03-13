@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultats | Miss & Mister Interlycee 2025-2026</title>
+    <meta name="description" content="Resultats Miss & Mister Interlycee 2025-2026." />
+    <meta name="theme-color" content="#08051e" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css?v=20260313-8" />
+  </head>
+  <body data-page="results">
+    <header class="site-header site-header--event">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html" aria-label="Accueil">
+          <span class="brand-mark"><img class="brand-logo" src="assets/images/logo asso.png" data-config-src="organizerLogo" alt="Logo association" /></span>
+          <span class="brand-text" data-config="eventName">Miss & Mister Interlycee</span>
+        </a>
+        <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Ouvrir le menu">Menu</button>
+        <nav class="site-nav" data-mobile-nav>
+          <div class="site-nav-links">
+            <a class="nav-link" data-page="home" href="index.html">Accueil</a>
+            <a class="nav-link" data-page="ticket" href="billetterie.html">Billetterie</a>
+            <a class="nav-link" data-page="cashless" href="cashless.html">Cashless</a>
+            <a class="nav-link" data-page="vote" href="votez.html">Votez</a>
+            <a class="nav-link" data-page="results" href="resultats.html">Resultats</a>
+            <a class="nav-link" data-page="contact" href="contact.html">Contact</a>
+          </div>
+          <a class="btn btn-primary" data-link="ticketPage" href="billetterie.html">Billetterie</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section page-hero">
+        <div class="container reveal">
+          <p class="section-kicker">Classement officiel</p>
+          <h1 class="section-title">Resultats</h1>
+          <p class="section-lead">
+            Suis l'evolution des votes Miss et Mister. Les classements sont actualises automatiquement selon les
+            donnees disponibles.
+          </p>
+          <div class="media-strip media-strip--compact">
+            <figure class="media-shot">
+              <img src="assets/images/518730705_18515537533031314_5242600046496987714_n.jpg" alt="Podium Miss & Mister Interlycee" />
+            </figure>
+            <figure class="media-shot">
+              <img src="assets/images/520463475_18515771005031314_461019538718042196_n.jpg" alt="Public et supporters" />
+            </figure>
+            <figure class="media-shot">
+              <img src="assets/images/518252964_18515537509031314_5186421720174815618_n.jpg" alt="Ambiance des resultats" />
+            </figure>
+          </div>
+          <div class="results-meta">
+            <span class="chip">Derniere mise a jour: <strong id="results-updated-at">--</strong></span>
+            <span class="chip" id="results-source">Source: en chargement...</span>
+            <span class="chip" id="results-total-votes">-- votes comptabilises</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container reveal results-block">
+          <h2>Podium Miss</h2>
+          <div class="podium-grid" id="podium-miss"></div>
+          <div class="table-shell">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Rang</th>
+                  <th>Candidate</th>
+                  <th>Lycee</th>
+                  <th>Votes</th>
+                </tr>
+              </thead>
+              <tbody id="table-miss-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container reveal results-block">
+          <h2>Podium Mister</h2>
+          <div class="podium-grid" id="podium-mister"></div>
+          <div class="table-shell">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Rang</th>
+                  <th>Candidat</th>
+                  <th>Lycee</th>
+                  <th>Votes</th>
+                </tr>
+              </thead>
+              <tbody id="table-mister-body"></tbody>
+            </table>
+          </div>
+          <div class="cta-actions" style="margin-top: 1rem">
+            <a class="btn btn-primary" href="votez.html">Je vote maintenant</a>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        Integration externe possible:
+        Colle ici le bloc HTML/JS source fourni par l'organisation, puis appelle:
+        window.renderInterlyceeResults(payload)
+      -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <div>
+          <strong data-config="eventFullName">Miss & Mister Interlycee 2025-2026</strong>
+          <p class="footer-note">Site evenementiel reutilisable pour editions futures.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Accueil</a>
+          <a href="billetterie.html">Billetterie</a>
+          <a href="cashless.html">Cashless</a>
+          <a href="votez.html">Votez</a>
+          <a href="resultats.html">Resultats</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p class="footer-note">Site lance rapidement • <span data-current-year>2026</span></p>
+      </div>
+    </footer>
+
+    <script defer src="assets/js/site-config.js?v=20260313-8"></script>
+    <script defer src="assets/js/main.js?v=20260313-8"></script>
+    <script defer src="assets/js/resultats.js?v=20260313-8"></script>
+  </body>
+</html>
