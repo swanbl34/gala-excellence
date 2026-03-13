@@ -601,6 +601,45 @@ main {
   border-color: rgba(208, 191, 255, 0.72);
 }
 
+.feature-card--media {
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 2%, rgba(215, 190, 255, 0.2), transparent 42%),
+    linear-gradient(160deg, rgba(79, 27, 194, 0.38), rgba(18, 7, 52, 0.72));
+}
+
+.feature-media {
+  margin: 0;
+  position: relative;
+  height: clamp(160px, 18vw, 215px);
+  overflow: hidden;
+}
+
+.feature-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 4, 22, 0) 45%, rgba(8, 4, 22, 0.55) 100%);
+  pointer-events: none;
+}
+
+.feature-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.feature-card--media:hover .feature-media img {
+  transform: scale(1.05);
+}
+
+.feature-copy {
+  padding: 0.95rem 1.05rem 1.1rem;
+}
+
 .cta-banner {
   margin-top: 1.5rem;
   padding: clamp(1.25rem, 3.2vw, 2.1rem);
@@ -1170,6 +1209,10 @@ textarea {
   .steps-grid .step-card,
   .info-grid .info-card {
     min-height: auto;
+  }
+
+  .feature-media {
+    height: clamp(170px, 45vw, 235px);
   }
 
   .assist-box {
