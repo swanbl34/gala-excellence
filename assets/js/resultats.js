@@ -5,18 +5,18 @@
 
   const fallbackResults = {
     miss: [
-      { name: "Lea M.", school: "Lycee Victor Schoelcher", votes: 1284, photo: "" },
-      { name: "Camille R.", school: "Lycee Bellevue", votes: 1142, photo: "" },
-      { name: "Ines D.", school: "Lycee Schoelcher", votes: 1033, photo: "" },
-      { name: "Nina T.", school: "Lycee Acajou 2", votes: 968, photo: "" },
-      { name: "Sarah P.", school: "Lycee Frantz Fanon", votes: 902, photo: "" }
+      { name: "Lea M.", school: "Lycee Victor Schoelcher", votes: 1284 },
+      { name: "Camille R.", school: "Lycee Bellevue", votes: 1142 },
+      { name: "Ines D.", school: "Lycee Schoelcher", votes: 1033 },
+      { name: "Nina T.", school: "Lycee Acajou 2", votes: 968 },
+      { name: "Sarah P.", school: "Lycee Frantz Fanon", votes: 902 }
     ],
     mister: [
-      { name: "Noah L.", school: "Lycee Bellevue", votes: 1221, photo: "" },
-      { name: "Ethan B.", school: "Lycee Victor Schoelcher", votes: 1105, photo: "" },
-      { name: "Mathis C.", school: "Lycee Acajou 2", votes: 981, photo: "" },
-      { name: "Yanis F.", school: "Lycee Schoelcher", votes: 917, photo: "" },
-      { name: "Adam N.", school: "Lycee Frantz Fanon", votes: 893, photo: "" }
+      { name: "Noah L.", school: "Lycee Bellevue", votes: 1221 },
+      { name: "Ethan B.", school: "Lycee Victor Schoelcher", votes: 1105 },
+      { name: "Mathis C.", school: "Lycee Acajou 2", votes: 981 },
+      { name: "Yanis F.", school: "Lycee Schoelcher", votes: 917 },
+      { name: "Adam N.", school: "Lycee Frantz Fanon", votes: 893 }
     ]
   };
 
@@ -54,8 +54,7 @@
     return {
       name: sanitizeText(item.name || item.candidate || item.nom, `Candidat ${index + 1}`),
       school: sanitizeText(item.school || item.lycee || item.establishment, "Lycee non renseigne"),
-      votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score),
-      photo: sanitizeText(item.photo || item.image || item.avatar || "", "")
+      votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score)
     };
   }
 
@@ -94,12 +93,6 @@
 
   function createAvatarMarkup(person) {
     const initials = getInitials(person.name);
-    const safeName = person.name.replace(/"/g, "&quot;");
-
-    if (person.photo) {
-      return `<div class="avatar"><img src="${person.photo}" alt="${safeName}" loading="lazy" onerror="this.closest('.avatar').innerHTML='${initials}'" /></div>`;
-    }
-
     return `<div class="avatar">${initials}</div>`;
   }
 
