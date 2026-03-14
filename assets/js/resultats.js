@@ -5,18 +5,18 @@
 
   const fallbackResults = {
     miss: [
-      { name: "Lea M.", school: "Lycee Victor Schoelcher", votes: 1284 },
+      { name: "Léa M.", school: "Lycée Victor Schœlcher", votes: 1284 },
       { name: "Camille R.", school: "Lycee Bellevue", votes: 1142 },
-      { name: "Ines D.", school: "Lycee Schoelcher", votes: 1033 },
+      { name: "Inès D.", school: "Lycée Schœlcher", votes: 1033 },
       { name: "Nina T.", school: "Lycee Acajou 2", votes: 968 },
-      { name: "Sarah P.", school: "Lycee Frantz Fanon", votes: 902 }
+      { name: "Sarah P.", school: "Lycée Frantz Fanon", votes: 902 }
     ],
     mister: [
-      { name: "Noah L.", school: "Lycee Bellevue", votes: 1221 },
-      { name: "Ethan B.", school: "Lycee Victor Schoelcher", votes: 1105 },
-      { name: "Mathis C.", school: "Lycee Acajou 2", votes: 981 },
-      { name: "Yanis F.", school: "Lycee Schoelcher", votes: 917 },
-      { name: "Adam N.", school: "Lycee Frantz Fanon", votes: 893 }
+      { name: "Noah L.", school: "Lycée Bellevue", votes: 1221 },
+      { name: "Ethan B.", school: "Lycée Victor Schœlcher", votes: 1105 },
+      { name: "Mathis C.", school: "Lycée Acajou 2", votes: 981 },
+      { name: "Yanis F.", school: "Lycée Schœlcher", votes: 917 },
+      { name: "Adam N.", school: "Lycée Frantz Fanon", votes: 893 }
     ]
   };
 
@@ -41,6 +41,12 @@
     return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
   }
 
+  function sanitizePhoto(value) {
+    if (typeof value !== "string") return "";
+    const trimmed = value.trim();
+    return trimmed || "";
+  }
+
   function getInitials(name) {
     return sanitizeText(name, "??")
       .split(/\s+/)
@@ -53,8 +59,9 @@
   function normalizeCandidate(item, index) {
     return {
       name: sanitizeText(item.name || item.candidate || item.nom, `Candidat ${index + 1}`),
-      school: sanitizeText(item.school || item.lycee || item.establishment, "Lycee non renseigne"),
-      votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score)
+      school: sanitizeText(item.school || item.lycee || item.establishment, "Lycée non renseigné"),
+      votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score),
+      photo: sanitizePhoto(item.photo || item.image || item.avatar || item.picture || item.photoUrl || item.imageUrl)
     };
   }
 
@@ -93,6 +100,9 @@
 
   function createAvatarMarkup(person) {
     const initials = getInitials(person.name);
+    if (person.photo) {
+      return `<div class="avatar"><img src="${person.photo}" alt="Photo de ${person.name}" loading="lazy" /></div>`;
+    }
     return `<div class="avatar">${initials}</div>`;
   }
 
@@ -101,7 +111,7 @@
 
     const top = list.slice(0, 3);
     if (!top.length) {
-      container.innerHTML = `<p class="empty-note">Aucun resultat disponible pour ${title}.</p>`;
+      container.innerHTML = `<p class="empty-note">Aucun résultat disponible pour ${title}.</p>`;
       return;
     }
 
@@ -129,7 +139,7 @@
     if (!tbody) return;
 
     if (!list.length) {
-      tbody.innerHTML = `<tr><td colspan="4">Aucun resultat ${title} disponible.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="4">Aucun résultat ${title} disponible.</td></tr>`;
       return;
     }
 
@@ -155,7 +165,7 @@
   function updateSummary(data, sourceLabel) {
     const total = [...data.miss, ...data.mister].reduce((sum, candidate) => sum + candidate.votes, 0);
 
-    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} votes comptabilises`;
+    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} votes comptabilisés`;
     if (refs.updatedAt) refs.updatedAt.textContent = new Date().toLocaleString("fr-FR");
     if (refs.sourceLabel) refs.sourceLabel.textContent = sourceLabel;
   }
@@ -192,7 +202,7 @@
   window.renderInterlyceeResults = function renderInterlyceeResults(payload) {
     const normalized = normalizePayload(payload);
     if (!normalized) return;
-    renderAll(normalized, "Source: bloc externe");
+    renderAll(normalized, "Source : bloc externe");
   };
 
   async function init() {
@@ -202,7 +212,7 @@
     if (injectedPayload) {
       const normalized = normalizePayload(injectedPayload);
       if (normalized) {
-        renderAll(normalized, "Source: payload injecte");
+        renderAll(normalized, "Source : payload injecté");
         return;
       }
     }
@@ -213,7 +223,7 @@
       return;
     }
 
-    renderAll(fallbackResults, "Source: jeu de donnees local (fallback)");
+    renderAll(fallbackResults, "Source : jeu de données local (fallback)");
   }
 
   init();

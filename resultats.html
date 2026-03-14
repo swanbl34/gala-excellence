@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resultats | Miss & Mister Interlycee 2025-2026</title>
-    <meta name="description" content="Resultats Miss & Mister Interlycee 2025-2026." />
+    <title>Résultats | Miss & Mister Interlycée 2025-2026</title>
+    <meta name="description" content="Résultats Miss & Mister Interlycée 2025-2026." />
     <meta name="theme-color" content="#08051e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,14 +12,14 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css?v=20260313-13" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20260314-01" />
   </head>
   <body data-page="results">
     <header class="site-header site-header--event">
       <div class="container nav-shell">
         <a class="brand" href="index.html" aria-label="Accueil">
           <span class="brand-mark"><img class="brand-logo" src="assets/images/logo asso.png" data-config-src="organizerLogo" alt="Logo association" /></span>
-          <span class="brand-text" data-config="eventName">Miss & Mister Interlycee</span>
+          <span class="brand-text" data-config="eventName">Miss & Mister Interlycée</span>
         </a>
         <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Ouvrir le menu">Menu</button>
         <nav class="site-nav" data-mobile-nav>
@@ -28,7 +28,7 @@
             <a class="nav-link" data-page="ticket" href="billetterie.html">Billetterie</a>
             <a class="nav-link" data-page="cashless" href="cashless.html">Cashless</a>
             <a class="nav-link" data-page="vote" href="votez.html">Votez</a>
-            <a class="nav-link" data-page="results" href="resultats.html">Resultats</a>
+            <a class="nav-link" data-page="results" href="resultats.html">Résultats</a>
             <a class="nav-link" data-page="contact" href="contact.html">Contact</a>
           </div>
           <a class="btn btn-primary" data-link="ticketPage" href="billetterie.html">Billetterie</a>
@@ -40,15 +40,18 @@
       <section class="section page-hero">
         <div class="container reveal">
           <p class="section-kicker">Classement officiel</p>
-          <h1 class="section-title">Resultats</h1>
+          <h1 class="section-title">Résultats</h1>
           <p class="section-lead">
-            Suis l'evolution des votes Miss et Mister. Les classements sont actualises automatiquement selon les
-            donnees disponibles.
+            Suis l'évolution des votes Miss et Mister. Les classements sont actualisés automatiquement selon les
+            données disponibles.
+          </p>
+          <p class="inline-note">
+            Les modalités de vote et d'attribution sont détaillées dans le <a href="reglement.html">règlement du concours</a>.
           </p>
           <div class="results-meta">
-            <span class="chip">Derniere mise a jour: <strong id="results-updated-at">--</strong></span>
-            <span class="chip" id="results-source">Source: en chargement...</span>
-            <span class="chip" id="results-total-votes">-- votes comptabilises</span>
+            <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
+            <span class="chip" id="results-source">Source : en chargement...</span>
+            <span class="chip" id="results-total-votes">-- votes comptabilisés</span>
           </div>
         </div>
       </section>
@@ -63,7 +66,7 @@
                 <tr>
                   <th>Rang</th>
                   <th>Candidate</th>
-                  <th>Lycee</th>
+                  <th>Lycée</th>
                   <th>Votes</th>
                 </tr>
               </thead>
@@ -83,7 +86,7 @@
                 <tr>
                   <th>Rang</th>
                   <th>Candidat</th>
-                  <th>Lycee</th>
+                  <th>Lycée</th>
                   <th>Votes</th>
                 </tr>
               </thead>
@@ -97,27 +100,29 @@
       </section>
 
       <!--
-        Integration externe possible:
+        Intégration externe possible :
         Colle ici le bloc HTML/JS source fourni par l'organisation, puis appelle:
         window.renderInterlyceeResults(payload)
+        Chaque participant peut inclure: photo, image, avatar, picture, photoUrl ou imageUrl.
       -->
     </main>
 
     <footer class="site-footer">
       <div class="container footer-shell">
         <div>
-          <strong data-config="eventFullName">Miss & Mister Interlycee 2025-2026</strong>
-          <p class="footer-note">Site evenementiel reutilisable pour editions futures.</p>
+          <strong data-config="eventFullName">Miss & Mister Interlycée 2025-2026</strong>
+          <p class="footer-note">Site événementiel réutilisable pour éditions futures.</p>
         </div>
         <div class="footer-links">
           <a href="index.html">Accueil</a>
           <a href="billetterie.html">Billetterie</a>
           <a href="cashless.html">Cashless</a>
           <a href="votez.html">Votez</a>
-          <a href="resultats.html">Resultats</a>
+          <a href="resultats.html">Résultats</a>
+          <a href="reglement.html">Règlement</a>
           <a href="contact.html">Contact</a>
         </div>
-        <p class="footer-note">Site lance rapidement • <span data-current-year>2026</span></p>
+        <p class="footer-note">Site lancé rapidement • <span data-current-year>2026</span></p>
       </div>
     </footer>
 

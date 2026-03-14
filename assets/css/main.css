@@ -725,6 +725,18 @@ main {
   flex-wrap: wrap;
 }
 
+.inline-note {
+  margin-top: 1rem;
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.inline-note a {
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
 .faq-list {
   margin-top: 1.2rem;
   display: grid;
@@ -858,12 +870,18 @@ main {
   place-items: center;
   color: #fff;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.podium-person .avatar {
+  width: 72px;
+  height: 72px;
 }
 
 .podium-name {
@@ -993,6 +1011,64 @@ textarea {
   margin-top: 0.7rem;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.rules-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(208, 191, 255, 0.28);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(240, 204, 121, 0.1), transparent 24%),
+    linear-gradient(155deg, rgba(138, 100, 255, 0.16), rgba(77, 132, 255, 0.08));
+  box-shadow: var(--shadow);
+}
+
+.rules-header {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(208, 191, 255, 0.16);
+}
+
+.rules-intro {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.rules-content {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.3rem;
+}
+
+.rules-section {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.rules-section h3,
+.rules-section h4 {
+  font-family: "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+}
+
+.rules-section h3 {
+  font-size: 1.25rem;
+}
+
+.rules-section h4 {
+  font-size: 1rem;
+  color: var(--gold-soft);
+}
+
+.rules-section p,
+.rules-list {
+  color: var(--muted);
+}
+
+.rules-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
 }
 
 .site-footer {

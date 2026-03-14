@@ -1,8 +1,8 @@
 window.SITE_CONFIG = {
-  eventName: "Miss & Mister Interlycee",
+  eventName: "Miss & Mister Interlycée",
   eventSeason: "2025-2026",
-  eventFullName: "Miss & Mister Interlycee 2025-2026",
-  eventTagline: "La plus grande soiree inter-lycees de la saison, entre show, elegance et energie collective.",
+  eventFullName: "Miss & Mister Interlycée 2025-2026",
+  eventTagline: "La plus grande soirée inter-lycées de la saison, entre show, élégance et énergie collective.",
   eventDateLabel: "Samedi 6 septembre 2026",
   eventDateISO: "2026-09-06T19:00:00-03:00",
   eventVenue: "Auditorium de l'Encre",
@@ -30,7 +30,7 @@ window.SITE_CONFIG = {
     contactPage: "contact.html"
   },
   results: {
-    lastUpdatedLabel: "Mise a jour en direct",
+    lastUpdatedLabel: "Mise à jour en direct",
     endpoints: []
   }
 };
