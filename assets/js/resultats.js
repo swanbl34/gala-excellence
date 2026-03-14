@@ -199,7 +199,7 @@
   }
 
   // Permet d'injecter un bloc externe de votes sans modifier cette page.
-  window.renderInterlyceeResults = function renderInterlyceeResults(payload) {
+  window.renderGalaResults = function renderGalaResults(payload) {
     const normalized = normalizePayload(payload);
     if (!normalized) return;
     renderAll(normalized, "Source : bloc externe");
@@ -207,7 +207,11 @@
 
   async function init() {
     const injectedPayload =
-      window.INTERLYCEE_RESULTS_PAYLOAD || window.RESULTS_PAYLOAD || window.__RESULTS_PAYLOAD__ || null;
+      window.GALA_RESULTS_PAYLOAD ||
+      window.INTERLYCEE_RESULTS_PAYLOAD ||
+      window.RESULTS_PAYLOAD ||
+      window.__RESULTS_PAYLOAD__ ||
+      null;
 
     if (injectedPayload) {
       const normalized = normalizePayload(injectedPayload);

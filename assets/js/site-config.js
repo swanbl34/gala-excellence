@@ -1,8 +1,8 @@
 window.SITE_CONFIG = {
-  eventName: "Miss & Mister Interlycée",
+  eventName: "Le Gala de l'Excellence Sportive",
   eventSeason: "2025-2026",
-  eventFullName: "Miss & Mister Interlycée 2025-2026",
-  eventTagline: "La plus grande soirée inter-lycées de la saison, entre show, élégance et énergie collective.",
+  eventFullName: "Le Gala de l'Excellence Sportive 2025-2026",
+  eventTagline: "La grande soirée de célébration du sport, de l'engagement et de l'excellence en Guyane.",
   eventDateLabel: "Samedi 6 septembre 2026",
   eventDateISO: "2026-09-06T19:00:00-03:00",
   eventVenue: "Auditorium de l'Encre",
