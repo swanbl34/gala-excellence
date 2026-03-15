@@ -710,6 +710,79 @@ main {
   font-size: 0.9rem;
 }
 
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem;
+  margin-top: 1.6rem;
+}
+
+.candidate-card {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 82% 2%, rgba(215, 190, 255, 0.16), transparent 42%),
+    linear-gradient(160deg, rgba(79, 27, 194, 0.38), rgba(18, 7, 52, 0.72));
+  box-shadow: var(--shadow);
+}
+
+.candidate-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.candidate-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.2rem;
+}
+
+.candidate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.candidate-badge,
+.candidate-school {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.42rem 0.78rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.candidate-badge {
+  color: var(--gold-soft);
+  border: 1px solid rgba(240, 204, 121, 0.28);
+  background: rgba(240, 204, 121, 0.12);
+}
+
+.candidate-school {
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.candidate-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.candidate-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
 .quick-card:hover {
   border-color: rgba(208, 191, 255, 0.72);
 }
@@ -1634,6 +1707,18 @@ textarea {
 
   .feature-media {
     height: clamp(170px, 45vw, 235px);
+  }
+
+  .candidate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-card {
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-photo {
+    aspect-ratio: 4 / 3;
   }
 
   .assist-box {

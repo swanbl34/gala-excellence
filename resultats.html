@@ -25,14 +25,15 @@
         <nav class="site-nav" data-mobile-nav>
           <div class="site-nav-links">
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
-            <a class="nav-link" data-page="ticket" href="billetterie.html">Billetterie</a>
-            <a class="nav-link" data-page="cashless" href="cashless.html">Cashless</a>
-            <a class="nav-link" data-page="application" href="candidature.html">Candidature</a>
-            <a class="nav-link" data-page="vote" href="votez.html">Votez</a>
-            <a class="nav-link" data-page="results" href="resultats.html">Résultats</a>
+            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+            <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+            <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votez.html">Votez</a>
+            <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
+            <a class="nav-link" data-page="ticket" data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
+            <a class="nav-link" data-page="cashless" data-phase-visible="billetterie" href="cashless.html">Cashless</a>
             <a class="nav-link" data-page="contact" href="contact.html">Contact</a>
           </div>
-          <a class="btn btn-primary" data-link="ticketPage" href="billetterie.html">Billetterie</a>
+          <a class="btn btn-primary" data-phase-visible="billetterie" data-link="ticketPage" href="billetterie.html">Billetterie</a>
         </nav>
       </div>
     </header>
@@ -43,11 +44,8 @@
           <p class="section-kicker">Classement officiel</p>
           <h1 class="section-title">Résultats</h1>
           <p class="section-lead">
-            Suis l'évolution des votes Miss et Mister. Les classements sont actualisés automatiquement selon les
-            données disponibles.
-          </p>
-          <p class="inline-note">
-            Les modalités de vote et d'attribution sont détaillées dans le <a href="reglement.html">règlement du concours</a>.
+            Consulte les classements officiels une fois les votes clôturés. Les données affichées sont actualisées
+            automatiquement selon les sources disponibles.
           </p>
           <div class="results-meta">
             <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
@@ -59,14 +57,14 @@
 
       <section class="section">
         <div class="container reveal results-block">
-          <h2>Podium Miss</h2>
+          <h2>Podium femmes</h2>
           <div class="podium-grid" id="podium-miss"></div>
           <div class="table-shell">
             <table class="results-table">
               <thead>
                 <tr>
                   <th>Rang</th>
-                  <th>Candidate</th>
+                  <th>Participante</th>
                   <th>Lycée</th>
                   <th>Votes</th>
                 </tr>
@@ -79,14 +77,14 @@
 
       <section class="section">
         <div class="container reveal results-block">
-          <h2>Podium Mister</h2>
+          <h2>Podium hommes</h2>
           <div class="podium-grid" id="podium-mister"></div>
           <div class="table-shell">
             <table class="results-table">
               <thead>
                 <tr>
                   <th>Rang</th>
-                  <th>Candidat</th>
+                  <th>Participant</th>
                   <th>Lycée</th>
                   <th>Votes</th>
                 </tr>
@@ -95,7 +93,7 @@
             </table>
           </div>
           <div class="cta-actions" style="margin-top: 1rem">
-            <a class="btn btn-primary" href="votez.html">Je vote maintenant</a>
+            <a class="btn btn-primary" href="billetterie.html">Accéder à la billetterie</a>
           </div>
         </div>
       </section>
@@ -116,11 +114,12 @@
         </div>
         <div class="footer-links">
           <a href="index.html">Accueil</a>
-          <a href="billetterie.html">Billetterie</a>
-          <a href="cashless.html">Cashless</a>
-          <a href="candidature.html">Candidature</a>
-          <a href="votez.html">Votez</a>
-          <a href="resultats.html">Résultats</a>
+          <a data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+          <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+          <a data-phase-visible="vote" href="votez.html">Votez</a>
+          <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
+          <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
+          <a data-phase-visible="billetterie" href="cashless.html">Cashless</a>
           <a href="reglement.html">Règlement</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -128,8 +127,8 @@
       </div>
     </footer>
 
-    <script defer src="assets/js/site-config.js?v=20260313-13"></script>
-    <script defer src="assets/js/main.js?v=20260313-13"></script>
-    <script defer src="assets/js/resultats.js?v=20260313-13"></script>
+    <script defer src="assets/js/site-config.js?v=20260313-15"></script>
+    <script defer src="assets/js/main.js?v=20260313-15"></script>
+    <script defer src="assets/js/resultats.js?v=20260313-15"></script>
   </body>
 </html>

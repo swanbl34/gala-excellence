@@ -25,6 +25,8 @@ window.SITE_CONFIG = {
     home: "index.html",
     ticketPage: "billetterie.html",
     cashlessPage: "cashless.html",
+    applicationPage: "candidature.html",
+    candidatesPage: "candidats.html",
     votePage: "votez.html",
     resultsPage: "resultats.html",
     contactPage: "contact.html"

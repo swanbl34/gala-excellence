@@ -2,7 +2,6 @@
   "use strict";
 
   const config = window.SITE_CONFIG || {};
-
   function fillConfigPlaceholders() {
     document.querySelectorAll("[data-config]").forEach((node) => {
       const key = node.getAttribute("data-config");

@@ -171,10 +171,10 @@
   }
 
   function renderAll(data, sourceLabel) {
-    renderPodium(refs.podiumMiss, data.miss, "Miss");
-    renderPodium(refs.podiumMister, data.mister, "Mister");
-    renderTable(refs.tableMiss, data.miss, "Miss");
-    renderTable(refs.tableMister, data.mister, "Mister");
+    renderPodium(refs.podiumMiss, data.miss, "la catégorie femmes");
+    renderPodium(refs.podiumMister, data.mister, "la catégorie hommes");
+    renderTable(refs.tableMiss, data.miss, "femmes");
+    renderTable(refs.tableMister, data.mister, "hommes");
     updateSummary(data, sourceLabel);
   }
 

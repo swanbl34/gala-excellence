@@ -25,14 +25,15 @@
         <nav class="site-nav" data-mobile-nav>
           <div class="site-nav-links">
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
-            <a class="nav-link" data-page="ticket" href="billetterie.html">Billetterie</a>
-            <a class="nav-link" data-page="cashless" href="cashless.html">Cashless</a>
-            <a class="nav-link" data-page="application" href="candidature.html">Candidature</a>
-            <a class="nav-link" data-page="vote" href="votez.html">Votez</a>
-            <a class="nav-link" data-page="results" href="resultats.html">Résultats</a>
+            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+            <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+            <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votez.html">Votez</a>
+            <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
+            <a class="nav-link" data-page="ticket" data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
+            <a class="nav-link" data-page="cashless" data-phase-visible="billetterie" href="cashless.html">Cashless</a>
             <a class="nav-link" data-page="contact" href="contact.html">Contact</a>
           </div>
-          <a class="btn btn-primary" data-link="ticketPage" href="billetterie.html">Billetterie</a>
+          <a class="btn btn-primary" data-phase-visible="billetterie" data-link="ticketPage" href="billetterie.html">Billetterie</a>
         </nav>
       </div>
     </header>
@@ -44,9 +45,6 @@
           <h1 class="section-title">Chaque vote peut tout changer</h1>
           <p class="section-lead">
             Soutiens ton candidat ou ta candidate. Ton vote renforce son parcours et impacte directement le classement.
-          </p>
-          <p class="inline-note">
-            Avant de voter, consulte le <a href="reglement.html">règlement du concours</a>.
           </p>
           <div class="hero-actions" style="margin-top: 1rem">
             <a class="btn btn-primary" href="#widget-vote">Je vote maintenant</a>
@@ -77,7 +75,7 @@
             dernier moment. Partage le lien autour de toi pour mobiliser ta communauté.
           </p>
           <div class="hero-actions" style="margin-top: 1rem">
-            <a class="btn btn-secondary" href="resultats.html">Voir les résultats</a>
+            <a class="btn btn-secondary" href="candidats.html">Voir les candidats</a>
           </div>
         </div>
       </section>
@@ -91,11 +89,12 @@
         </div>
         <div class="footer-links">
           <a href="index.html">Accueil</a>
-          <a href="billetterie.html">Billetterie</a>
-          <a href="cashless.html">Cashless</a>
-          <a href="candidature.html">Candidature</a>
-          <a href="votez.html">Votez</a>
-          <a href="resultats.html">Résultats</a>
+          <a data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+          <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+          <a data-phase-visible="vote" href="votez.html">Votez</a>
+          <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
+          <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
+          <a data-phase-visible="billetterie" href="cashless.html">Cashless</a>
           <a href="reglement.html">Règlement</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -103,7 +102,7 @@
       </div>
     </footer>
 
-    <script defer src="assets/js/site-config.js?v=20260313-12"></script>
-    <script defer src="assets/js/main.js?v=20260313-12"></script>
+    <script defer src="assets/js/site-config.js?v=20260313-15"></script>
+    <script defer src="assets/js/main.js?v=20260313-15"></script>
   </body>
 </html>
