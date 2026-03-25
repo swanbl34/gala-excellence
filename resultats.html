@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Résultats | Le Gala de l'Excellence Sportive 2025-2026</title>
-    <meta name="description" content="Résultats du Gala de l'Excellence Sportive 2025-2026." />
+    <meta name="description" content="Resultats du Gala de l'Excellence Sportive 2025-2026." />
     <meta name="theme-color" content="#08051e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,14 +18,13 @@
     <header class="site-header site-header--event">
       <div class="container nav-shell">
         <a class="brand" href="index.html" aria-label="Accueil">
-          <span class="brand-mark"><img class="brand-logo" src="assets/images/logo asso.png" data-config-src="organizerLogo" alt="Logo association" /></span>
           <span class="brand-text" data-config="eventName">Le Gala de l'Excellence Sportive</span>
         </a>
         <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Ouvrir le menu">Menu</button>
         <nav class="site-nav" data-mobile-nav>
           <div class="site-nav-links">
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
-            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidature.html">Candidature</a>
             <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
             <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votez.html">Votez</a>
             <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
@@ -41,35 +40,35 @@
     <main>
       <section class="section page-hero">
         <div class="container reveal">
-          <p class="section-kicker">Classement officiel</p>
-          <h1 class="section-title">Résultats</h1>
+          <p class="section-kicker">Publication officielle</p>
+          <h1 class="section-title">Résultats et distinctions</h1>
           <p class="section-lead">
-            Consulte les classements officiels une fois les votes clôturés. Les données affichées sont actualisées
-            automatiquement selon les sources disponibles.
+            Consultez les distinctions publiees pour le gala ainsi que les resultats du vote du public lorsque
+            ceux-ci sont disponibles.
           </p>
           <div class="results-meta">
-            <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
+            <span class="chip">Derniere mise a jour : <strong id="results-updated-at">--</strong></span>
             <span class="chip" id="results-source">Source : en chargement...</span>
-            <span class="chip" id="results-total-votes">-- votes comptabilisés</span>
+            <span class="chip" id="results-total-votes">-- voix comptabilisees</span>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container reveal results-block">
-          <h2>Podium femmes</h2>
-          <div class="podium-grid" id="podium-miss"></div>
+          <h2>Vote du public - selection feminine</h2>
+          <div class="podium-grid" id="podium-women"></div>
           <div class="table-shell">
             <table class="results-table">
               <thead>
                 <tr>
                   <th>Rang</th>
-                  <th>Participante</th>
-                  <th>Lycée</th>
-                  <th>Votes</th>
+                  <th>Personnalite</th>
+                  <th>Structure</th>
+                  <th>Voix</th>
                 </tr>
               </thead>
-              <tbody id="table-miss-body"></tbody>
+              <tbody id="table-women-body"></tbody>
             </table>
           </div>
         </div>
@@ -77,32 +76,32 @@
 
       <section class="section">
         <div class="container reveal results-block">
-          <h2>Podium hommes</h2>
-          <div class="podium-grid" id="podium-mister"></div>
+          <h2>Vote du public - selection masculine</h2>
+          <div class="podium-grid" id="podium-men"></div>
           <div class="table-shell">
             <table class="results-table">
               <thead>
                 <tr>
                   <th>Rang</th>
-                  <th>Participant</th>
-                  <th>Lycée</th>
-                  <th>Votes</th>
+                  <th>Personnalite</th>
+                  <th>Structure</th>
+                  <th>Voix</th>
                 </tr>
               </thead>
-              <tbody id="table-mister-body"></tbody>
+              <tbody id="table-men-body"></tbody>
             </table>
           </div>
           <div class="cta-actions" style="margin-top: 1rem">
-            <a class="btn btn-primary" href="billetterie.html">Accéder à la billetterie</a>
+            <a class="btn btn-primary" href="billetterie.html">Acceder a la billetterie</a>
           </div>
         </div>
       </section>
 
       <!--
-        Intégration externe possible :
-        Colle ici le bloc HTML/JS source fourni par l'organisation, puis appelle:
+        Integration externe possible :
+        Collez ici le bloc HTML/JS source fourni par l'organisation, puis appelez :
         window.renderGalaResults(payload)
-        Chaque participant peut inclure: photo, image, avatar, picture, photoUrl ou imageUrl.
+        Chaque profil peut inclure : photo, image, avatar, picture, photoUrl ou imageUrl.
       -->
     </main>
 
@@ -110,20 +109,20 @@
       <div class="container footer-shell">
         <div>
           <strong data-config="eventFullName">Le Gala de l'Excellence Sportive 2025-2026</strong>
-          <p class="footer-note">Site événementiel réutilisable pour éditions futures.</p>
+          <p class="footer-note">Site officiel du gala dedie a la valorisation du benevolat sportif.</p>
         </div>
         <div class="footer-links">
           <a href="index.html">Accueil</a>
-          <a data-phase-visible="candidature" href="candidature.html">Candidatures</a>
+          <a data-phase-visible="candidature" href="candidature.html">Candidature</a>
           <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
           <a data-phase-visible="vote" href="votez.html">Votez</a>
           <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
           <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
           <a data-phase-visible="billetterie" href="cashless.html">Cashless</a>
-          <a href="reglement.html">Règlement</a>
+          <a href="reglement.html">Reglement</a>
           <a href="contact.html">Contact</a>
         </div>
-        <p class="footer-note">Site lancé rapidement • <span data-current-year>2026</span></p>
+        <p class="footer-note">Collectivite Territoriale de Guyane • <span data-current-year>2026</span></p>
       </div>
     </footer>
 

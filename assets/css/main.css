@@ -306,12 +306,16 @@ main {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.95fr) minmax(260px, 0.82fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 1fr);
+  grid-template-areas:
+    "copy poster"
+    "copy aside";
   gap: clamp(1rem, 2.2vw, 1.75rem);
-  align-items: stretch;
+  align-items: start;
 }
 
 .hero-copy {
+  grid-area: copy;
   padding: clamp(0.4rem, 1vw, 0.9rem) 0;
   display: flex;
   flex-direction: column;
@@ -385,13 +389,17 @@ main {
 }
 
 .hero-poster-panel {
+  grid-area: poster;
   margin: 0;
-  display: flex;
+  display: block;
+  align-self: start;
+  width: 100%;
 }
 
 .hero-poster-frame {
   position: relative;
   width: 100%;
+  aspect-ratio: 1 / 1;
   padding: 0.8rem;
   background:
     radial-gradient(circle at 14% 16%, rgba(138, 100, 255, 0.34), transparent 48%),
@@ -400,6 +408,7 @@ main {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(208, 191, 255, 0.28);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .hero-poster-tag {
@@ -422,16 +431,19 @@ main {
 .hero-poster {
   width: 100%;
   height: 100%;
-  min-height: clamp(340px, 46vh, 430px);
-  aspect-ratio: 4 / 5;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 20px;
   border: 1px solid rgba(208, 191, 255, 0.18);
 }
 
 .hero-aside {
+  grid-area: aside;
   display: grid;
+  width: 100%;
   gap: 0.6rem;
   align-content: start;
 }
@@ -483,6 +495,23 @@ main {
 .hero-countdown-card h2 {
   margin-top: 0.28rem;
   font-size: 1rem;
+}
+
+.hero-countdown-card--overlay {
+  position: absolute;
+  left: 1.15rem;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  z-index: 1;
+  padding: 0.9rem;
+  background:
+    linear-gradient(180deg, rgba(10, 6, 33, 0.82), rgba(10, 6, 33, 0.92)),
+    radial-gradient(circle at 100% 0%, rgba(240, 204, 121, 0.12), transparent 28%);
+  backdrop-filter: blur(8px);
+}
+
+.hero-countdown-card--overlay .countdown {
+  margin-top: 0.6rem;
 }
 
 .hero-stats {
@@ -1309,6 +1338,7 @@ textarea {
   .hero-grid,
   .contact-layout {
     grid-template-columns: 1fr;
+    grid-template-areas: none;
   }
 
   .hero-copy {
@@ -1383,7 +1413,7 @@ textarea {
   }
 
   .hero-poster {
-    min-height: 320px;
+    min-height: 0;
   }
 
   .hero-stats {
@@ -1589,8 +1619,16 @@ textarea {
     border-radius: 26px;
   }
 
+  .hero-countdown-card--overlay {
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    padding: 0.8rem;
+    border-radius: 22px;
+  }
+
   .hero-poster {
-    min-height: 300px;
+    min-height: 0;
     border-radius: 22px;
   }
 

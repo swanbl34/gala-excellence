@@ -4,27 +4,27 @@
   const config = window.SITE_CONFIG || {};
 
   const fallbackResults = {
-    miss: [
-      { name: "Léa M.", school: "Lycée Victor Schœlcher", votes: 1284 },
-      { name: "Camille R.", school: "Lycee Bellevue", votes: 1142 },
-      { name: "Inès D.", school: "Lycée Schœlcher", votes: 1033 },
-      { name: "Nina T.", school: "Lycee Acajou 2", votes: 968 },
-      { name: "Sarah P.", school: "Lycée Frantz Fanon", votes: 902 }
+    women: [
+      { name: "Murielle A.", structure: "Ligue de handball de Guyane", votes: 1284 },
+      { name: "Sandra R.", structure: "Association sportive de Kourou", votes: 1142 },
+      { name: "Ines D.", structure: "Comite regional d'athletisme", votes: 1033 },
+      { name: "Nadia T.", structure: "Club nautique de Cayenne", votes: 968 },
+      { name: "Sarah P.", structure: "US Sinnamary", votes: 902 }
     ],
-    mister: [
-      { name: "Noah L.", school: "Lycée Bellevue", votes: 1221 },
-      { name: "Ethan B.", school: "Lycée Victor Schœlcher", votes: 1105 },
-      { name: "Mathis C.", school: "Lycée Acajou 2", votes: 981 },
-      { name: "Yanis F.", school: "Lycée Schœlcher", votes: 917 },
-      { name: "Adam N.", school: "Lycée Frantz Fanon", votes: 893 }
+    men: [
+      { name: "Noel L.", structure: "COSMA", votes: 1221 },
+      { name: "Etienne B.", structure: "Club omnisports de Remire", votes: 1105 },
+      { name: "Mathieu C.", structure: "Ligue de judo de Guyane", votes: 981 },
+      { name: "Yanis F.", structure: "Association sportive de Mana", votes: 917 },
+      { name: "Adam N.", structure: "USL Montjoly", votes: 893 }
     ]
   };
 
   const refs = {
-    podiumMiss: document.getElementById("podium-miss"),
-    podiumMister: document.getElementById("podium-mister"),
-    tableMiss: document.getElementById("table-miss-body"),
-    tableMister: document.getElementById("table-mister-body"),
+    podiumWomen: document.getElementById("podium-women"),
+    podiumMen: document.getElementById("podium-men"),
+    tableWomen: document.getElementById("table-women-body"),
+    tableMen: document.getElementById("table-men-body"),
     updatedAt: document.getElementById("results-updated-at"),
     sourceLabel: document.getElementById("results-source"),
     totalVotes: document.getElementById("results-total-votes")
@@ -56,10 +56,10 @@
       .join("");
   }
 
-  function normalizeCandidate(item, index) {
+  function normalizeProfile(item, index) {
     return {
-      name: sanitizeText(item.name || item.candidate || item.nom, `Candidat ${index + 1}`),
-      school: sanitizeText(item.school || item.lycee || item.establishment, "Lycée non renseigné"),
+      name: sanitizeText(item.name || item.person || item.candidate || item.nom, `Profil ${index + 1}`),
+      structure: sanitizeText(item.structure || item.school || item.lycee || item.establishment, "Structure non renseignee"),
       votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score),
       photo: sanitizePhoto(item.photo || item.image || item.avatar || item.picture || item.photoUrl || item.imageUrl)
     };
@@ -72,30 +72,34 @@
   function normalizePayload(payload) {
     if (!payload || typeof payload !== "object") return null;
 
-    let missRaw = [];
-    let misterRaw = [];
+    let womenRaw = [];
+    let menRaw = [];
 
-    if (Array.isArray(payload.miss) || Array.isArray(payload.mister)) {
-      missRaw = Array.isArray(payload.miss) ? payload.miss : [];
-      misterRaw = Array.isArray(payload.mister) ? payload.mister : [];
-    } else if (Array.isArray(payload.candidates)) {
-      payload.candidates.forEach((candidate) => {
-        const category = sanitizeText(candidate.category || candidate.type || "", "").toLowerCase();
-        if (category.includes("miss")) missRaw.push(candidate);
-        if (category.includes("mister")) misterRaw.push(candidate);
+    if (Array.isArray(payload.women) || Array.isArray(payload.men)) {
+      womenRaw = Array.isArray(payload.women) ? payload.women : [];
+      menRaw = Array.isArray(payload.men) ? payload.men : [];
+    } else if (Array.isArray(payload.femmes) || Array.isArray(payload.hommes)) {
+      womenRaw = Array.isArray(payload.femmes) ? payload.femmes : [];
+      menRaw = Array.isArray(payload.hommes) ? payload.hommes : [];
+    } else if (Array.isArray(payload.candidates) || Array.isArray(payload.profiles)) {
+      const list = Array.isArray(payload.candidates) ? payload.candidates : payload.profiles;
+      list.forEach((profile) => {
+        const category = sanitizeText(profile.category || profile.type || profile.genre || "", "").toLowerCase();
+        if (category.includes("fem") || category.includes("women")) womenRaw.push(profile);
+        if (category.includes("hom") || category.includes("men")) menRaw.push(profile);
       });
     } else if (Array.isArray(payload)) {
-      payload.forEach((candidate) => {
-        const category = sanitizeText(candidate.category || candidate.type || "", "").toLowerCase();
-        if (category.includes("miss")) missRaw.push(candidate);
-        if (category.includes("mister")) misterRaw.push(candidate);
+      payload.forEach((profile) => {
+        const category = sanitizeText(profile.category || profile.type || profile.genre || "", "").toLowerCase();
+        if (category.includes("fem") || category.includes("women")) womenRaw.push(profile);
+        if (category.includes("hom") || category.includes("men")) menRaw.push(profile);
       });
     }
 
-    const miss = sortByVotesDesc(missRaw.map(normalizeCandidate));
-    const mister = sortByVotesDesc(misterRaw.map(normalizeCandidate));
+    const women = sortByVotesDesc(womenRaw.map(normalizeProfile));
+    const men = sortByVotesDesc(menRaw.map(normalizeProfile));
 
-    return { miss, mister };
+    return { women, men };
   }
 
   function createAvatarMarkup(person) {
@@ -125,10 +129,10 @@
               ${createAvatarMarkup(person)}
               <div>
                 <p class="podium-name">${person.name}</p>
-                <p class="podium-school">${person.school}</p>
+                <p class="podium-school">${person.structure}</p>
               </div>
             </div>
-            <p class="podium-votes">${person.votes.toLocaleString("fr-FR")} votes</p>
+            <p class="podium-votes">${person.votes.toLocaleString("fr-FR")} voix</p>
           </article>
         `;
       })
@@ -154,7 +158,7 @@
                 <span>${person.name}</span>
               </div>
             </td>
-            <td>${person.school}</td>
+            <td>${person.structure}</td>
             <td>${person.votes.toLocaleString("fr-FR")}</td>
           </tr>
         `;
@@ -163,18 +167,18 @@
   }
 
   function updateSummary(data, sourceLabel) {
-    const total = [...data.miss, ...data.mister].reduce((sum, candidate) => sum + candidate.votes, 0);
+    const total = [...data.women, ...data.men].reduce((sum, profile) => sum + profile.votes, 0);
 
-    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} votes comptabilisés`;
+    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} voix comptabilisees`;
     if (refs.updatedAt) refs.updatedAt.textContent = new Date().toLocaleString("fr-FR");
     if (refs.sourceLabel) refs.sourceLabel.textContent = sourceLabel;
   }
 
   function renderAll(data, sourceLabel) {
-    renderPodium(refs.podiumMiss, data.miss, "la catégorie femmes");
-    renderPodium(refs.podiumMister, data.mister, "la catégorie hommes");
-    renderTable(refs.tableMiss, data.miss, "femmes");
-    renderTable(refs.tableMister, data.mister, "hommes");
+    renderPodium(refs.podiumWomen, data.women, "la selection feminine");
+    renderPodium(refs.podiumMen, data.men, "la selection masculine");
+    renderTable(refs.tableWomen, data.women, "feminin");
+    renderTable(refs.tableMen, data.men, "masculin");
     updateSummary(data, sourceLabel);
   }
 
@@ -187,7 +191,7 @@
         if (!response.ok) continue;
         const payload = await response.json();
         const normalized = normalizePayload(payload);
-        if (normalized && (normalized.miss.length || normalized.mister.length)) {
+        if (normalized && (normalized.women.length || normalized.men.length)) {
           return { data: normalized, sourceLabel: `Source: ${endpoint}` };
         }
       } catch (_err) {
@@ -198,7 +202,7 @@
     return null;
   }
 
-  // Permet d'injecter un bloc externe de votes sans modifier cette page.
+  // Permet d'injecter un bloc externe de resultats sans modifier cette page.
   window.renderGalaResults = function renderGalaResults(payload) {
     const normalized = normalizePayload(payload);
     if (!normalized) return;
@@ -208,7 +212,6 @@
   async function init() {
     const injectedPayload =
       window.GALA_RESULTS_PAYLOAD ||
-      window.INTERLYCEE_RESULTS_PAYLOAD ||
       window.RESULTS_PAYLOAD ||
       window.__RESULTS_PAYLOAD__ ||
       null;
