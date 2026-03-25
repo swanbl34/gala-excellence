@@ -1341,6 +1341,12 @@ textarea {
     grid-template-areas: none;
   }
 
+  .hero-copy,
+  .hero-poster-panel,
+  .hero-aside {
+    grid-area: auto;
+  }
+
   .hero-copy {
     padding-top: 0;
   }
@@ -1617,14 +1623,18 @@ textarea {
   .hero-poster-frame {
     padding: 0.55rem;
     border-radius: 26px;
+    overflow: visible;
   }
 
   .hero-countdown-card--overlay {
-    left: 0.85rem;
-    right: 0.85rem;
-    bottom: 0.85rem;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 0.75rem;
     padding: 0.8rem;
     border-radius: 22px;
+    backdrop-filter: none;
   }
 
   .hero-poster {
