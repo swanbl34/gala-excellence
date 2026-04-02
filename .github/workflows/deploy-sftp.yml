@@ -24,7 +24,7 @@ jobs:
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           SFTP_REMOTE_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
         run: |
-          lftp -u "$SFTP_USERNAME","$SFTP_PASSWORD" sftp://$SFTP_HOST:$SFTP_PORT <<EOF
+          lftp -u "$SFTP_USERNAME","$SFTP_PASSWORD" "sftp://$SFTP_HOST:$SFTP_PORT" <<EOF
           set sftp:auto-confirm yes
           set net:max-retries 2
           set net:timeout 20
@@ -32,6 +32,6 @@ jobs:
             --verbose \
             --exclude-glob .git* \
             --exclude .github/ \
-            ./ $SFTP_REMOTE_DIR
+            ./ "$SFTP_REMOTE_DIR"
           bye
           EOF
