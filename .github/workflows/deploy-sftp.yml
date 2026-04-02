@@ -1,4 +1,4 @@
-name: Deploy to LWS via SFTP
+name: Deploy to LWS via FTPS
 
 on:
   push:
@@ -16,22 +16,25 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy via SFTP
+      - name: Deploy via FTPS
         env:
-          SFTP_HOST: ${{ secrets.SFTP_HOST }}
-          SFTP_PORT: ${{ secrets.SFTP_PORT }}
-          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_REMOTE_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
+          FTP_HOST: ${{ secrets.SFTP_HOST }}
+          FTP_PORT: ${{ secrets.SFTP_PORT }}
+          FTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
         run: |
-          lftp -u "$SFTP_USERNAME","$SFTP_PASSWORD" "sftp://$SFTP_HOST:$SFTP_PORT" <<EOF
-          set sftp:auto-confirm yes
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_HOST:$FTP_PORT" <<EOF
+          set ftp:ssl-allow yes
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate no
           set net:max-retries 2
           set net:timeout 20
           mirror -R \
             --verbose \
             --exclude-glob .git* \
             --exclude .github/ \
-            ./ "$SFTP_REMOTE_DIR"
+            ./ "$FTP_REMOTE_DIR"
           bye
           EOF
