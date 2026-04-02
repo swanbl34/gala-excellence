@@ -7,13 +7,13 @@
     women: [
       { name: "Murielle A.", structure: "Ligue de handball de Guyane", votes: 1284 },
       { name: "Sandra R.", structure: "Association sportive de Kourou", votes: 1142 },
-      { name: "Ines D.", structure: "Comite regional d'athletisme", votes: 1033 },
+      { name: "Inès D.", structure: "Comité régional d'athlétisme", votes: 1033 },
       { name: "Nadia T.", structure: "Club nautique de Cayenne", votes: 968 },
       { name: "Sarah P.", structure: "US Sinnamary", votes: 902 }
     ],
     men: [
-      { name: "Noel L.", structure: "COSMA", votes: 1221 },
-      { name: "Etienne B.", structure: "Club omnisports de Remire", votes: 1105 },
+      { name: "Noël L.", structure: "COSMA", votes: 1221 },
+      { name: "Étienne B.", structure: "Club omnisports de Rémire", votes: 1105 },
       { name: "Mathieu C.", structure: "Ligue de judo de Guyane", votes: 981 },
       { name: "Yanis F.", structure: "Association sportive de Mana", votes: 917 },
       { name: "Adam N.", structure: "USL Montjoly", votes: 893 }
@@ -59,7 +59,7 @@
   function normalizeProfile(item, index) {
     return {
       name: sanitizeText(item.name || item.person || item.candidate || item.nom, `Profil ${index + 1}`),
-      structure: sanitizeText(item.structure || item.school || item.lycee || item.establishment, "Structure non renseignee"),
+      structure: sanitizeText(item.structure || item.school || item.lycee || item.establishment, "Structure non renseignée"),
       votes: sanitizeVotes(item.votes || item.voteCount || item.total || item.score),
       photo: sanitizePhoto(item.photo || item.image || item.avatar || item.picture || item.photoUrl || item.imageUrl)
     };
@@ -169,15 +169,15 @@
   function updateSummary(data, sourceLabel) {
     const total = [...data.women, ...data.men].reduce((sum, profile) => sum + profile.votes, 0);
 
-    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} voix comptabilisees`;
+    if (refs.totalVotes) refs.totalVotes.textContent = `${total.toLocaleString("fr-FR")} voix comptabilisées`;
     if (refs.updatedAt) refs.updatedAt.textContent = new Date().toLocaleString("fr-FR");
     if (refs.sourceLabel) refs.sourceLabel.textContent = sourceLabel;
   }
 
   function renderAll(data, sourceLabel) {
-    renderPodium(refs.podiumWomen, data.women, "la selection feminine");
-    renderPodium(refs.podiumMen, data.men, "la selection masculine");
-    renderTable(refs.tableWomen, data.women, "feminin");
+    renderPodium(refs.podiumWomen, data.women, "la sélection féminine");
+    renderPodium(refs.podiumMen, data.men, "la sélection masculine");
+    renderTable(refs.tableWomen, data.women, "féminin");
     renderTable(refs.tableMen, data.men, "masculin");
     updateSummary(data, sourceLabel);
   }
@@ -192,7 +192,7 @@
         const payload = await response.json();
         const normalized = normalizePayload(payload);
         if (normalized && (normalized.women.length || normalized.men.length)) {
-          return { data: normalized, sourceLabel: `Source: ${endpoint}` };
+          return { data: normalized, sourceLabel: `Source : ${endpoint}` };
         }
       } catch (_err) {
         // Ignore endpoint errors and keep trying the next source.
@@ -202,7 +202,7 @@
     return null;
   }
 
-  // Permet d'injecter un bloc externe de resultats sans modifier cette page.
+  // Permet d'injecter un bloc externe de résultats sans modifier cette page.
   window.renderGalaResults = function renderGalaResults(payload) {
     const normalized = normalizePayload(payload);
     if (!normalized) return;
@@ -230,7 +230,7 @@
       return;
     }
 
-    renderAll(fallbackResults, "Source : jeu de données local (fallback)");
+    renderAll(fallbackResults, "Source : jeu de données local");
   }
 
   init();
