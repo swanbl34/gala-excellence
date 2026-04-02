@@ -173,7 +173,7 @@
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       if (!status) return;
-      status.textContent = "Message pret a etre envoye. Connectez ensuite ce formulaire a votre service d'e-mail ou API.";
+      status.textContent = "Message prêt à être envoyé. Connectez ensuite ce formulaire à votre service d'e-mail ou API.";
     });
   }
 

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Résultats | Le Gala de l'Excellence Sportive 2025-2026</title>
-    <meta name="description" content="Résultats du Gala de l'Excellence Sportive 2025-2026." />
+    <title>Votez | Le Gala de l'Excellence Sportive 2025-2026</title>
+    <meta name="description" content="Vote officiel du Gala de l'Excellence Sportive 2025-2026." />
     <meta name="theme-color" content="#08051e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="assets/css/main.css?v=20260314-01" />
   </head>
-  <body data-page="results">
+  <body data-page="vote">
     <header class="site-header site-header--event">
       <div class="container nav-shell">
         <a class="brand" href="index.html" aria-label="Accueil">
@@ -39,69 +39,45 @@
     <main>
       <section class="section page-hero">
         <div class="container reveal">
-          <p class="section-kicker">Publication officielle</p>
-          <h1 class="section-title">Résultats et distinctions</h1>
+          <p class="section-kicker">Vote officiel</p>
+          <h1 class="section-title">Soutenez un parcours bénévole</h1>
           <p class="section-lead">
-            Consultez les distinctions publiées pour le gala ainsi que les résultats du vote du public lorsque
-            ceux-ci sont disponibles.
+            Le vote du public permet de mettre en lumière des dirigeants, entraîneurs et officiels dont
+            l'engagement marque durablement le sport guyanais.
           </p>
-          <div class="results-meta">
-            <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
-            <span class="chip" id="results-source">Source : en chargement...</span>
-            <span class="chip" id="results-total-votes">-- voix comptabilisées</span>
+          <div class="hero-actions" style="margin-top: 1rem">
+            <a class="btn btn-primary" href="#widget-vote">Je vote maintenant</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="widget-vote">
+        <div class="container reveal">
+          <p class="section-kicker">Plateforme de vote</p>
+          <div class="iframe-shell iframe-shell--widget">
+            <iframe
+              src="https://widget.weezevent.com/pay/243764/widgets/a449f17e-77c8-4e1a-8214-39959a73ab5a"
+              title="Widget de vote du Gala de l'Excellence Sportive"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="container reveal results-block">
-          <h2>Vote du public - sélection féminine</h2>
-          <div class="podium-grid" id="podium-women"></div>
-          <div class="table-shell">
-            <table class="results-table">
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Personnalité</th>
-                  <th>Structure</th>
-                  <th>Voix</th>
-                </tr>
-              </thead>
-              <tbody id="table-women-body"></tbody>
-            </table>
+        <div class="container reveal">
+          <p class="section-kicker">Pourquoi voter ?</p>
+          <h2 class="section-title">Faites entendre votre reconnaissance</h2>
+          <p class="section-lead">
+            Votre vote valorise l'engagement de bénévoles essentiels au quotidien des clubs et associations sportives.
+            Partagez cette page autour de vous pour soutenir le parcours qui vous inspire.
+          </p>
+          <div class="hero-actions" style="margin-top: 1rem">
+            <a class="btn btn-secondary" href="candidats.html">Voir les candidats</a>
           </div>
         </div>
       </section>
-
-      <section class="section">
-        <div class="container reveal results-block">
-          <h2>Vote du public - sélection masculine</h2>
-          <div class="podium-grid" id="podium-men"></div>
-          <div class="table-shell">
-            <table class="results-table">
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Personnalité</th>
-                  <th>Structure</th>
-                  <th>Voix</th>
-                </tr>
-              </thead>
-              <tbody id="table-men-body"></tbody>
-            </table>
-          </div>
-          <div class="cta-actions" style="margin-top: 1rem">
-            <a class="btn btn-primary" href="billetterie.html">Accéder à la billetterie</a>
-          </div>
-        </div>
-      </section>
-
-      <!--
-        Intégration externe possible :
-        Collez ici le bloc HTML/JS source fourni par l'organisation, puis appelez :
-        window.renderGalaResults(payload)
-        Chaque profil peut inclure : photo, image, avatar, picture, photoUrl ou imageUrl.
-      -->
     </main>
 
     <footer class="site-footer">
@@ -128,6 +104,5 @@
     <script defer src="assets/js/site-config.js?v=20260313-15"></script>
     <script defer src="assets/js/phase-router.js?v=20260403-01"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
-    <script defer src="assets/js/resultats.js?v=20260313-15"></script>
   </body>
 </html>
