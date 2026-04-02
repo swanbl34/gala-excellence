@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Résultats | Le Gala de l'Excellence Sportive 2025-2026</title>
-    <meta name="description" content="Résultats du Gala de l'Excellence Sportive 2025-2026." />
+    <title>Candidature | Le Gala de l'Excellence Sportive 2025-2026</title>
+    <meta
+      name="description"
+      content="Déposez un dossier de valorisation pour le Gala de l'Excellence Sportive et consultez le règlement officiel."
+    />
     <meta name="theme-color" content="#08051e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +17,7 @@
     />
     <link rel="stylesheet" href="assets/css/main.css?v=20260314-01" />
   </head>
-  <body data-page="results">
+  <body data-page="application">
     <header class="site-header site-header--event">
       <div class="container nav-shell">
         <a class="brand" href="index.html" aria-label="Accueil">
@@ -39,69 +42,75 @@
     <main>
       <section class="section page-hero">
         <div class="container reveal">
-          <p class="section-kicker">Publication officielle</p>
-          <h1 class="section-title">Résultats et distinctions</h1>
+          <p class="section-kicker">Dossier officiel</p>
+          <h1 class="section-title">Déposer un dossier de valorisation</h1>
           <p class="section-lead">
-            Consultez les distinctions publiées pour le gala ainsi que les résultats du vote du public lorsque
-            ceux-ci sont disponibles.
+            Cette page permet à une association, un club ou une structure sportive de proposer un bénévole à l'honneur
+            dans le cadre du Gala de l'Excellence Sportive.
           </p>
-          <div class="results-meta">
-            <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
-            <span class="chip" id="results-source">Source : en chargement...</span>
-            <span class="chip" id="results-total-votes">-- voix comptabilisées</span>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="reglement.html">Lire le règlement</a>
+            <a class="btn btn-secondary" href="#formulaire-candidature">Accéder au formulaire</a>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="container reveal results-block">
-          <h2>Vote du public - sélection féminine</h2>
-          <div class="podium-grid" id="podium-women"></div>
-          <div class="table-shell">
-            <table class="results-table">
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Personnalité</th>
-                  <th>Structure</th>
-                  <th>Voix</th>
-                </tr>
-              </thead>
-              <tbody id="table-women-body"></tbody>
-            </table>
+        <div class="container reveal">
+          <div class="cta-banner">
+            <p class="section-kicker">Étape recommandée</p>
+            <h2>Consultez le règlement avant tout dépôt</h2>
+            <p>
+              Le règlement précise les conditions d'éligibilité, les fonctions concernées, les pièces attendues et les
+              modalités d'étude des dossiers.
+            </p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="reglement.html">Consulter le règlement</a>
+              <a class="btn btn-ghost" href="contact.html">Poser une question</a>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="container reveal results-block">
-          <h2>Vote du public - sélection masculine</h2>
-          <div class="podium-grid" id="podium-men"></div>
-          <div class="table-shell">
-            <table class="results-table">
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Personnalité</th>
-                  <th>Structure</th>
-                  <th>Voix</th>
-                </tr>
-              </thead>
-              <tbody id="table-men-body"></tbody>
-            </table>
-          </div>
-          <div class="cta-actions" style="margin-top: 1rem">
-            <a class="btn btn-primary" href="billetterie.html">Accéder à la billetterie</a>
+        <div class="container reveal">
+          <p class="section-kicker">Avant le dépôt</p>
+          <h2 class="section-title">Préparez un dossier complet</h2>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>1. Vérifiez l'éligibilité</h3>
+              <p>Assurez-vous que la personne proposée correspond bien aux critères prévus par le règlement.</p>
+            </article>
+            <article class="info-card">
+              <h3>2. Identifiez la bonne fonction</h3>
+              <p>Dirigeant associatif, officiel ou entraîneur : la catégorie doit être claire dès le dépôt.</p>
+            </article>
+            <article class="info-card">
+              <h3>3. Préparez les justificatifs</h3>
+              <p>Rassemblez les informations, expériences, actions menées et éléments utiles à l'évaluation.</p>
+            </article>
+            <article class="info-card">
+              <h3>4. Envoyez le dossier</h3>
+              <p>Complétez ensuite le formulaire ci-dessous avec attention afin de transmettre une proposition recevable.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <!--
-        Intégration externe possible :
-        Collez ici le bloc HTML/JS source fourni par l'organisation, puis appelez :
-        window.renderGalaResults(payload)
-        Chaque profil peut inclure : photo, image, avatar, picture, photoUrl ou imageUrl.
-      -->
+      <section class="section" id="formulaire-candidature">
+        <div class="container reveal contact-layout">
+          <article class="form-card">
+            <h2>Formulaire de dépôt</h2>
+            <p class="section-lead" style="margin-bottom: 1rem">
+              Completez le formulaire ci-dessous pour transmettre votre dossier de candidature.
+            </p>
+            <div class="iframe-shell iframe-shell--widget">
+              <div data-tf-live="01KN4XCBQ8B1TQWDMJQ3E1A2MN"></div>
+            </div>
+            <p class="form-status">Le formulaire est intégré directement depuis Typeform.</p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -128,6 +137,6 @@
     <script defer src="assets/js/site-config.js?v=20260313-15"></script>
     <script defer src="assets/js/phase-router.js?v=20260403-01"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
-    <script defer src="assets/js/resultats.js?v=20260313-15"></script>
+    <script src="//embed.typeform.com/next/embed.js"></script>
   </body>
 </html>
