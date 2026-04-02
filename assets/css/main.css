@@ -1176,6 +1176,20 @@ main {
   gap: 1rem;
 }
 
+.contact-layout--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.contact-layout--single .form-card {
+  width: 100%;
+}
+
+.contact-layout--single .iframe-shell--widget {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .contact-card,
 .form-card {
   border-radius: var(--radius-md);
