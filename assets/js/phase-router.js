@@ -1,5 +1,5 @@
 // Change this value to 0, 1, 2, or 3 depending on the current site phase.
-var PHASE = 0;
+var PHASE = 1;
 
 (function () {
   "use strict";
