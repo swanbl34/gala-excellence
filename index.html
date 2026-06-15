@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css?v=20260314-01" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20260615-03" />
   </head>
   <body data-page="home">
     <header class="site-header site-header--event">
@@ -31,9 +31,9 @@
         <nav class="site-nav" data-mobile-nav>
           <div class="site-nav-links">
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
-            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidature.html">Candidature</a>
+            <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidatures.html">Candidature</a>
             <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
-            <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votez.html">Votez</a>
+            <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votes.html">Votez</a>
             <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
             <a class="nav-link" data-page="cashless" data-phase-visible="billetterie" href="cashless.html">Cashless</a>
             <a class="nav-link" data-page="contact" href="contact.html">Contact</a>
@@ -59,8 +59,8 @@
               La cérémonie organisée par la Collectivité Territoriale de Guyane pour valoriser les bénévoles qui font vivre le sport.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" data-phase-visible="candidature" href="candidature.html">Déposer un dossier</a>
-              <a class="btn btn-primary" data-phase-visible="vote" data-link="votePage" href="votez.html">Soutenir un parcours</a>
+              <a class="btn btn-primary" data-phase-visible="candidature" href="candidatures.html">Déposer un dossier</a>
+              <a class="btn btn-primary" data-phase-visible="vote" data-link="votePage" href="votes.html">Soutenir un parcours</a>
               <a class="btn btn-primary" data-phase-visible="billetterie" data-link="ticketPage" href="billetterie.html">Réserver</a>
             </div>
             <div class="hero-note">
@@ -137,6 +137,35 @@
         </div>
       </section>
 
+      <section class="section event-video-section">
+        <div class="container event-video-layout reveal">
+          <div class="event-video-copy">
+            <p class="section-kicker">Au coeur du gala</p>
+            <h2 class="section-title">Une mise en lumière vivante des parcours engagés</h2>
+            <p class="section-lead">
+              Entre scène, rencontres et émotions partagées, le gala raconte l'engagement de celles et ceux qui portent
+              le sport guyanais toute l'année.
+            </p>
+            <div class="event-video-points">
+              <span>Engagement</span>
+              <span>Reconnaissance</span>
+              <span>Transmission</span>
+            </div>
+          </div>
+          <figure class="event-video-frame">
+            <video
+              class="event-video"
+              src="assets/videos/gala-excellence-vertical.mp4"
+              controls
+              muted
+              playsinline
+              preload="metadata"
+              aria-label="Vidéo du Gala de l'Excellence Sportive"
+            ></video>
+          </figure>
+        </div>
+      </section>
+
       <section class="section">
         <div class="container reveal">
           <p class="section-kicker">En images</p>
@@ -191,11 +220,11 @@
               <h3>Espace Cashless</h3>
               <p>Rechargez votre compte pour fluidifier les paiements pendant l'événement.</p>
             </a>
-            <a class="quick-card" data-phase-visible="candidature" href="candidature.html">
+            <a class="quick-card" data-phase-visible="candidature" href="candidatures.html">
               <h3>Candidature</h3>
               <p>Déposez un dossier de valorisation pour un bénévole du mouvement sportif.</p>
             </a>
-            <a class="quick-card" data-phase-visible="vote" href="votez.html">
+            <a class="quick-card" data-phase-visible="vote" href="votes.html">
               <h3>Votez</h3>
               <p>Exprimez votre soutien au moment de l'ouverture des votes du public.</p>
             </a>
@@ -294,8 +323,8 @@
               et les informations pratiques pour suivre l'événement.
             </p>
             <div class="cta-actions">
-              <a class="btn btn-primary" data-phase-visible="candidature" href="candidature.html">Déposer un dossier</a>
-              <a class="btn btn-primary" data-phase-visible="vote" href="votez.html">Voter</a>
+              <a class="btn btn-primary" data-phase-visible="candidature" href="candidatures.html">Déposer un dossier</a>
+              <a class="btn btn-primary" data-phase-visible="vote" href="votes.html">Voter</a>
               <a class="btn btn-primary" data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
               <a class="btn btn-secondary" data-phase-visible="vote billetterie" href="candidats.html">Voir les candidats</a>
               <a class="btn btn-ghost" data-phase-visible="billetterie" href="cashless.html">Espace Cashless</a>
@@ -313,9 +342,9 @@
         </div>
         <div class="footer-links">
           <a href="index.html">Accueil</a>
-          <a data-phase-visible="candidature" href="candidature.html">Candidature</a>
+          <a data-phase-visible="candidature" href="candidatures.html">Candidature</a>
           <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
-          <a data-phase-visible="vote" href="votez.html">Votez</a>
+          <a data-phase-visible="vote" href="votes.html">Votez</a>
           <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
           <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
           <a data-phase-visible="billetterie" href="cashless.html">Cashless</a>
@@ -327,7 +356,7 @@
     </footer>
 
     <script defer src="assets/js/site-config.js?v=20260313-15"></script>
-    <script defer src="assets/js/phase-router.js?v=20260403-01"></script>
+    <script defer src="assets/js/phase-router.js?v=20260615-03"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
   </body>
 </html>

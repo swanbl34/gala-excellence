@@ -1,5 +1,7 @@
 // Change this value to 0, 1, 2, or 3 depending on the current site phase.
-var PHASE = 1;
+// 0 keeps the full site visible.
+var PHASE = 2;
+var PHASE_LINK_VERSION = "20260615-03";
 
 (function () {
   "use strict";
@@ -125,7 +127,11 @@ var PHASE = 1;
     const currentPageName = getPageNameFromPath(url.pathname);
     const canonicalPageName = getCanonicalPageName(currentPageName);
 
-    if (currentPageName !== canonicalPageName) {
+    if (MANAGED_PAGES.has(canonicalPageName)) {
+      url.searchParams.set("site_phase", `${currentPhase}-${PHASE_LINK_VERSION}`);
+      const suffix = `${url.search}${url.hash}`;
+      link.setAttribute("href", `${canonicalPageName}${suffix}`);
+    } else if (currentPageName !== canonicalPageName) {
       const suffix = `${url.search}${url.hash}`;
       link.setAttribute("href", `${canonicalPageName}${suffix}`);
     }

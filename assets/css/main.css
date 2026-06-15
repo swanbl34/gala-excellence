@@ -670,6 +670,79 @@ main {
   font-size: 0.75rem;
 }
 
+.event-video-section {
+  padding-top: clamp(1.7rem, 3vw, 2.6rem);
+}
+
+.event-video-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: clamp(1.2rem, 4vw, 3.2rem);
+  align-items: center;
+}
+
+.event-video-copy {
+  max-width: 680px;
+}
+
+.event-video-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.event-video-points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.42rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 204, 121, 0.28);
+  color: var(--gold-soft);
+  background: rgba(240, 204, 121, 0.1);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.event-video-frame {
+  position: relative;
+  width: min(100%, 390px);
+  margin: 0 auto;
+  padding: 0.72rem;
+  border-radius: 28px;
+  border: 1px solid rgba(208, 191, 255, 0.28);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(240, 204, 121, 0.2), transparent 34%),
+    radial-gradient(circle at 86% 16%, rgba(77, 132, 255, 0.24), transparent 36%),
+    linear-gradient(160deg, rgba(36, 81, 106, 0.38), rgba(18, 7, 52, 0.76));
+  box-shadow: var(--shadow);
+}
+
+.event-video-frame::before {
+  content: "";
+  position: absolute;
+  inset: 1.1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(240, 204, 121, 0.16);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.event-video {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: min(74vh, 690px);
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
+  background: #08051e;
+}
+
 .media-strip {
   margin-top: 1.2rem;
   display: grid;
@@ -742,34 +815,83 @@ main {
 .candidate-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.35rem;
-  margin-top: 1.6rem;
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
 .candidate-card {
   display: grid;
-  grid-template-columns: 210px 1fr;
+  grid-template-columns: minmax(190px, 0.72fr) 1fr;
+  min-height: 430px;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border);
   background:
-    radial-gradient(circle at 82% 2%, rgba(215, 190, 255, 0.16), transparent 42%),
-    linear-gradient(160deg, rgba(79, 27, 194, 0.38), rgba(18, 7, 52, 0.72));
+    radial-gradient(circle at 82% 2%, rgba(240, 204, 121, 0.15), transparent 42%),
+    linear-gradient(160deg, rgba(36, 81, 106, 0.48), rgba(18, 7, 52, 0.76));
   box-shadow: var(--shadow);
+}
+
+.candidate-media {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: rgba(10, 6, 33, 0.5);
+}
+
+.candidate-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 62%, rgba(8, 5, 30, 0.42));
+  pointer-events: none;
 }
 
 .candidate-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   display: block;
+}
+
+.candidate-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: var(--gold-soft);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background:
+    linear-gradient(135deg, rgba(240, 204, 121, 0.18), transparent 34%),
+    linear-gradient(160deg, rgba(36, 81, 106, 0.76), rgba(18, 7, 52, 0.92));
+}
+
+.candidate-photo-placeholder span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(240, 204, 121, 0.34);
+  border-radius: 999px;
+  background: rgba(8, 5, 30, 0.45);
 }
 
 .candidate-card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  padding: 1.2rem;
+  gap: 1rem;
+  padding: clamp(1.1rem, 2.4vw, 1.55rem);
 }
 
 .candidate-meta {
@@ -803,13 +925,47 @@ main {
 }
 
 .candidate-card h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
   margin: 0;
 }
 
 .candidate-card p {
   color: var(--muted);
   margin: 0;
+}
+
+.candidate-facts {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.candidate-facts div {
+  padding: 0.72rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.candidate-facts dt {
+  margin-bottom: 0.2rem;
+  color: var(--gold-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.candidate-facts dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.candidate-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .quick-card:hover {
@@ -1405,6 +1561,18 @@ textarea {
   .media-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .event-video-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-video-copy {
+    max-width: none;
+  }
+
+  .event-video-frame {
+    width: min(100%, 430px);
+  }
 }
 
 @media (max-height: 840px) and (min-width: 1061px) {
@@ -1758,6 +1926,38 @@ textarea {
     height: 180px;
   }
 
+  .event-video-section {
+    padding-top: 2.2rem;
+  }
+
+  .event-video-layout {
+    gap: 1rem;
+  }
+
+  .event-video-points {
+    gap: 0.45rem;
+  }
+
+  .event-video-points span {
+    min-height: 32px;
+    font-size: 0.66rem;
+  }
+
+  .event-video-frame {
+    padding: 0.52rem;
+    border-radius: 24px;
+  }
+
+  .event-video-frame::before {
+    inset: 0.86rem;
+    border-radius: 19px;
+  }
+
+  .event-video {
+    max-height: 72vh;
+    border-radius: 19px;
+  }
+
   .quick-grid .quick-card,
   .feature-grid .feature-card,
   .steps-grid .step-card,
@@ -1777,10 +1977,20 @@ textarea {
 
   .candidate-card {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .candidate-media {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
   }
 
   .candidate-photo {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto;
+  }
+
+  .candidate-card .btn {
+    width: 100%;
   }
 
   .assist-box {
