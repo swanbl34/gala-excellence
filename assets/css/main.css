@@ -856,6 +856,10 @@ main {
   display: block;
 }
 
+.candidate-photo--shift-left {
+  object-position: 58% 18%;
+}
+
 .candidate-photo-placeholder {
   width: 100%;
   height: 100%;
