@@ -22,7 +22,7 @@ window.SITE_CONFIG = {
     ticket:
       "https://www.weezevent.com/widget_billeterie.php?id_evenement=1795295&widget_key=E1795295&locale=fr_FR&code=1980&_gl=1*xb60gp*_gcl_au*Mzc0NzA1NzA4LjE3NzA2NDMyMDguNjI1ODE5MzgyLjE3NzI0MzgyNjguMTc3MjQzODI3MQ..*_ga*MTIzOTY4NjQzNy4xNzY5NTY4Mjc1*_ga_39H9VBFX7G*czE3NzI0NTQyMDUkbzg3NSRnMSR0MTc3MjQ1NDI2OSRqNjAkbDAkaDE2ODE3ODI5MjU.",
     cashless: "https://widget.weezevent.com/pay/243764/widgets/b11a4d31-e737-4982-a1ca-10f11fc872dd",
-    vote: "https://widget.weezevent.com/pay/243764/widgets/a449f17e-77c8-4e1a-8214-39959a73ab5a",
+    vote: "https://widget.weezevent.com/pay/243764/widgets/87011417-ad2a-482f-97a7-9ed74f2bbb3c/login",
     home: "index.html",
     ticketPage: "billetterie.html",
     cashlessPage: "cashless.html",
