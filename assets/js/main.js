@@ -165,18 +165,6 @@
     });
   }
 
-  function initContactForm() {
-    const form = document.querySelector("[data-contact-form]");
-    if (!form) return;
-
-    const status = form.querySelector(".form-status");
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!status) return;
-      status.textContent = "Message prêt à être envoyé. Connectez ensuite ce formulaire à votre service d'e-mail ou API.";
-    });
-  }
-
   function setYear() {
     document.querySelectorAll("[data-current-year]").forEach((node) => {
       node.textContent = String(new Date().getFullYear());
@@ -192,6 +180,5 @@
   initReveal();
   initCountdown();
   initFaq();
-  initContactForm();
   setYear();
 })();

@@ -1,7 +1,7 @@
 // Change this value to 0, 1, 2, or 3 depending on the current site phase.
 // 0 keeps the full site visible.
-var PHASE = 2;
-var PHASE_LINK_VERSION = "20260615-03";
+var PHASE = 3;
+var PHASE_LINK_VERSION = "20260818-01";
 
 (function () {
   "use strict";

@@ -39,21 +39,33 @@
     <main>
       <section class="section page-hero">
         <div class="container reveal">
-          <p class="section-kicker">Publication officielle</p>
-          <h1 class="section-title">Résultats et distinctions</h1>
+          <p class="section-kicker">Vote du public</p>
+          <h1 class="section-title">Résultats du vote du public</h1>
           <p class="section-lead">
-            Consultez les distinctions publiées pour le gala ainsi que les résultats du vote du public lorsque
-            ceux-ci sont disponibles.
+            Le vote est terminé. Merci à toutes celles et ceux qui ont soutenu les bénévoles mis à l'honneur.
           </p>
           <div class="results-meta">
-            <span class="chip">Dernière mise à jour : <strong id="results-updated-at">--</strong></span>
-            <span class="chip" id="results-source">Source : en chargement...</span>
-            <span class="chip" id="results-total-votes">-- voix comptabilisées</span>
+            <span class="chip">Publication : <strong id="results-updated-at">à venir</strong></span>
+            <span class="chip" id="results-source">Résultats officiels à venir</span>
+            <span class="chip" id="results-total-votes">Vote terminé</span>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="results-awaiting">
+        <div class="container reveal">
+          <div class="assist-box">
+            <h2>Publication prochaine</h2>
+            <p>
+              Les résultats sont en cours de validation. Ils seront affichés sur cette page dès leur publication
+              officielle.
+            </p>
+            <a class="btn btn-primary" href="billetterie.html">Accéder à la billetterie</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="results-women-section" hidden>
         <div class="container reveal results-block">
           <h2>Vote du public - sélection féminine</h2>
           <div class="podium-grid" id="podium-women"></div>
@@ -73,7 +85,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="results-men-section" hidden>
         <div class="container reveal results-block">
           <h2>Vote du public - sélection masculine</h2>
           <div class="podium-grid" id="podium-men"></div>
@@ -125,9 +137,9 @@
       </div>
     </footer>
 
-    <script defer src="assets/js/site-config.js?v=20260313-15"></script>
-    <script defer src="assets/js/phase-router.js?v=20260615-03"></script>
+    <script defer src="assets/js/site-config.js?v=20260818-01"></script>
+    <script defer src="assets/js/phase-router.js?v=20260818-01"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
-    <script defer src="assets/js/resultats.js?v=20260313-15"></script>
+    <script defer src="assets/js/resultats.js?v=20260818-01"></script>
   </body>
 </html>

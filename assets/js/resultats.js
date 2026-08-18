@@ -3,23 +3,6 @@
 
   const config = window.SITE_CONFIG || {};
 
-  const fallbackResults = {
-    women: [
-      { name: "Murielle A.", structure: "Ligue de handball de Guyane", votes: 1284 },
-      { name: "Sandra R.", structure: "Association sportive de Kourou", votes: 1142 },
-      { name: "Inès D.", structure: "Comité régional d'athlétisme", votes: 1033 },
-      { name: "Nadia T.", structure: "Club nautique de Cayenne", votes: 968 },
-      { name: "Sarah P.", structure: "US Sinnamary", votes: 902 }
-    ],
-    men: [
-      { name: "Noël L.", structure: "COSMA", votes: 1221 },
-      { name: "Étienne B.", structure: "Club omnisports de Rémire", votes: 1105 },
-      { name: "Mathieu C.", structure: "Ligue de judo de Guyane", votes: 981 },
-      { name: "Yanis F.", structure: "Association sportive de Mana", votes: 917 },
-      { name: "Adam N.", structure: "USL Montjoly", votes: 893 }
-    ]
-  };
-
   const refs = {
     podiumWomen: document.getElementById("podium-women"),
     podiumMen: document.getElementById("podium-men"),
@@ -27,7 +10,10 @@
     tableMen: document.getElementById("table-men-body"),
     updatedAt: document.getElementById("results-updated-at"),
     sourceLabel: document.getElementById("results-source"),
-    totalVotes: document.getElementById("results-total-votes")
+    totalVotes: document.getElementById("results-total-votes"),
+    awaiting: document.getElementById("results-awaiting"),
+    womenSection: document.getElementById("results-women-section"),
+    menSection: document.getElementById("results-men-section")
   };
 
   function sanitizeText(value, fallback) {
@@ -175,11 +161,23 @@
   }
 
   function renderAll(data, sourceLabel) {
+    if (refs.awaiting) refs.awaiting.hidden = true;
+    if (refs.womenSection) refs.womenSection.hidden = false;
+    if (refs.menSection) refs.menSection.hidden = false;
     renderPodium(refs.podiumWomen, data.women, "la sélection féminine");
     renderPodium(refs.podiumMen, data.men, "la sélection masculine");
     renderTable(refs.tableWomen, data.women, "féminin");
     renderTable(refs.tableMen, data.men, "masculin");
     updateSummary(data, sourceLabel);
+  }
+
+  function renderAwaitingResults() {
+    if (refs.awaiting) refs.awaiting.hidden = false;
+    if (refs.womenSection) refs.womenSection.hidden = true;
+    if (refs.menSection) refs.menSection.hidden = true;
+    if (refs.updatedAt) refs.updatedAt.textContent = "à venir";
+    if (refs.sourceLabel) refs.sourceLabel.textContent = "Résultats officiels à venir";
+    if (refs.totalVotes) refs.totalVotes.textContent = "Vote terminé";
   }
 
   async function fetchFromEndpoints() {
@@ -230,7 +228,7 @@
       return;
     }
 
-    renderAll(fallbackResults, "Source : jeu de données local");
+    renderAwaitingResults();
   }
 
   init();
