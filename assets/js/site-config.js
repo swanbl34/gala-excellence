@@ -17,7 +17,8 @@ window.SITE_CONFIG = {
   organizerInstagram: "@gala.excellence.sportive",
   organizerInstagramHref: "https://instagram.com/gala.excellence.sportive",
   links: {
-    ticket: "https://widget.weezevent.com/ticket/E2167253/?code=6244&locale=fr-FR",
+    ticket:
+      "https://www.weezevent.com/widget_billeterie.php?id_evenement=2167253&widget_key=E2167253&locale=fr_FR&code=6244",
     cashless: "https://widget.weezevent.com/pay/243764/widgets/b11a4d31-e737-4982-a1ca-10f11fc872dd",
     vote: "https://widget.weezevent.com/pay/243764/widgets/87011417-ad2a-482f-97a7-9ed74f2bbb3c/login",
     home: "index.html",
