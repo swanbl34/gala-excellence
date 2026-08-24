@@ -3,9 +3,9 @@ window.SITE_CONFIG = {
   eventSeason: "2025-2026",
   eventFullName: "Le Gala de l'Excellence Sportive 2025-2026",
   eventTagline:
-    "Rendez-vous le 6 septembre 2026 pour célébrer les bénévoles qui font vivre le sport guyanais.",
-  eventDateLabel: "6 septembre 2026",
-  eventDateISO: "2026-09-06T19:00:00-03:00",
+    "Rendez-vous le 5 septembre 2026 pour célébrer les bénévoles qui font vivre le sport guyanais.",
+  eventDateLabel: "5 septembre 2026",
+  eventDateISO: "2026-09-05T19:00:00-03:00",
   eventVenue: "Auditorium de l'Encre",
   eventHours: "19 h – 21 h",
   eventAccess: "Route de Montabo, Cayenne",
