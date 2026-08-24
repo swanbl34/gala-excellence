@@ -9,7 +9,7 @@ window.SITE_CONFIG = {
   eventVenue: "Auditorium de l'Encre",
   eventHours: "19 h – 21 h",
   eventAccess: "Route de Montabo, Cayenne",
-  heroPoster: "assets/images/nouveau header.webp?v=20260403-000001",
+  heroPoster: "assets/images/v1_Gala_Excellence_Sportive_2026.png?v=20260824",
   organizerLogo: "assets/images/logo asso.webp",
   organizerName: "Collectivité Territoriale de Guyane",
   organizerEmail: "galadelexcellence@ctguyane.fr",
