@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css?v=20260427-01" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20260925-01" />
   </head>
   <body data-page="ticket">
     <header class="site-header site-header--event">
@@ -26,6 +26,7 @@
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
             <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidatures.html">Candidature</a>
             <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+            <a class="nav-link" data-page="photos" data-phase-visible="apres" href="photos.html">Photos</a>
             <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votes.html">Votez</a>
             <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
             <a class="nav-link" data-page="cashless" data-phase-visible="billetterie" href="cashless.html">Cashless</a>
@@ -40,12 +41,28 @@
       <section class="section page-hero">
         <div class="container reveal">
           <p class="section-kicker">Billetterie officielle</p>
-          <h1 class="section-title">Réservez votre place en toute simplicité</h1>
-          <p class="section-lead">
+          <h1 class="section-title" data-phase-not="4">Réservez votre place en toute simplicité</h1>
+          <h1 class="section-title" data-phase-only="4">La billetterie est fermée</h1>
+          <p class="section-lead" data-phase-not="4">
             Choisissez votre billet et finalisez votre réservation pour assister à la cérémonie dédiée aux bénévoles
             du mouvement sportif guyanais.
           </p>
-          <div class="iframe-shell iframe-shell--ticket">
+          <p class="section-lead" data-phase-only="4">
+            La cérémonie du <span data-config="eventDateLabel">5 septembre 2026</span> a eu lieu : la vente de billets
+            est close. Merci à toutes celles et ceux qui étaient présents.
+          </p>
+          <div class="notice-card" data-phase-only="4">
+            <h2>Revivez la soirée</h2>
+            <p>
+              Les albums photos de la cérémonie sont en ligne et en accès libre, et les bénévoles mis à l'honneur
+              restent à découvrir sur le site.
+            </p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="photos.html">Voir les photos</a>
+              <a class="btn btn-secondary" href="candidats.html">Voir les candidats</a>
+            </div>
+          </div>
+          <div class="iframe-shell iframe-shell--ticket" data-phase-not="4">
             <iframe
               src="https://www.weezevent.com/widget_billeterie.php?id_evenement=2167253&amp;widget_key=E2167253&amp;locale=fr_FR&amp;code=6244"
               title="Billetterie du Gala de l'Excellence Sportive"
@@ -54,8 +71,11 @@
             ></iframe>
           </div>
           <div class="assist-box">
-            <p>
+            <p data-phase-not="4">
               Besoin d'aide avec votre réservation ? Contactez l'équipe organisatrice.
+            </p>
+            <p data-phase-only="4">
+              Une question sur votre commande ou sur l'édition passée ? Contactez l'équipe organisatrice.
             </p>
             <a class="btn btn-secondary" href="contact.html">Contacter l'organisation</a>
           </div>
@@ -73,6 +93,7 @@
           <a href="index.html">Accueil</a>
           <a data-phase-visible="candidature" href="candidatures.html">Candidature</a>
           <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+          <a data-phase-visible="apres" href="photos.html">Photos</a>
           <a data-phase-visible="vote" href="votes.html">Votez</a>
           <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
           <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
@@ -84,8 +105,8 @@
       </div>
     </footer>
 
-    <script defer src="assets/js/site-config.js?v=20260818-02"></script>
-    <script defer src="assets/js/phase-router.js?v=20260818-01"></script>
+    <script defer src="assets/js/site-config.js?v=20260925-01"></script>
+    <script defer src="assets/js/phase-router.js?v=20260925-01"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
   </body>
 </html>

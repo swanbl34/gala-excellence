@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css?v=20260616-01" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20260925-01" />
   </head>
   <body data-page="candidates">
     <header class="site-header site-header--event">
@@ -29,6 +29,7 @@
             <a class="nav-link" data-page="home" href="index.html">Accueil</a>
             <a class="nav-link" data-page="application" data-phase-visible="candidature" href="candidatures.html">Candidature</a>
             <a class="nav-link" data-page="candidates" data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+            <a class="nav-link" data-page="photos" data-phase-visible="apres" href="photos.html">Photos</a>
             <a class="nav-link" data-page="vote" data-phase-visible="vote" href="votes.html">Votez</a>
             <a class="nav-link" data-page="results" data-phase-visible="billetterie" href="resultats.html">Résultats</a>
             <a class="nav-link" data-page="cashless" data-phase-visible="billetterie" href="cashless.html">Cashless</a>
@@ -44,9 +45,13 @@
         <div class="container reveal">
           <p class="section-kicker">Candidats en lumière</p>
           <h2 class="section-title">Les coups de cœur du bénévolat sportif</h2>
-          <p class="section-lead">
+          <p class="section-lead" data-phase-not="4">
             Six parcours engagés, six disciplines et une même énergie au service du sport guyanais. Découvrez les
             bénévoles mis à l'honneur pour cette édition.
+          </p>
+          <p class="section-lead" data-phase-only="4">
+            Six parcours engagés, six disciplines et une même énergie au service du sport guyanais. Retrouvez les
+            bénévoles mis à l'honneur lors de l'édition 2025-2026.
           </p>
           <div class="candidate-grid">
             <article class="candidate-card">
@@ -219,13 +224,20 @@
       <section class="section">
         <div class="container reveal">
           <div class="cta-banner">
-            <p class="section-kicker">Le 5 septembre 2026</p>
-            <h2>Venez célébrer ces parcours lors du gala</h2>
-            <p>
+            <p class="section-kicker" data-phase-not="4">Le 5 septembre 2026</p>
+            <p class="section-kicker" data-phase-only="4">Édition 2025-2026</p>
+            <h2 data-phase-not="4">Venez célébrer ces parcours lors du gala</h2>
+            <h2 data-phase-only="4">Ces parcours ont été célébrés lors du gala</h2>
+            <p data-phase-not="4">
               Retrouvez les bénévoles mis à l'honneur à l'Auditorium de l'Encre et partagez une soirée dédiée à leur
               engagement au service du sport guyanais.
             </p>
+            <p data-phase-only="4">
+              La cérémonie s'est tenue à l'Auditorium de l'Encre. Retrouvez ces bénévoles et tous les temps forts de la
+              soirée dans les albums photos.
+            </p>
             <div class="cta-actions">
+              <a class="btn btn-primary" data-phase-only="4" href="photos.html">Voir les photos</a>
               <a class="btn btn-primary" data-phase-visible="vote" href="votes.html">Accéder au vote</a>
               <a class="btn btn-primary" data-phase-visible="billetterie" href="billetterie.html">Réserver ma place</a>
               <a class="btn btn-ghost" href="contact.html">Contacter l'organisation</a>
@@ -245,6 +257,7 @@
           <a href="index.html">Accueil</a>
           <a data-phase-visible="candidature" href="candidatures.html">Candidature</a>
           <a data-phase-visible="all vote billetterie" href="candidats.html">Candidats</a>
+          <a data-phase-visible="apres" href="photos.html">Photos</a>
           <a data-phase-visible="vote" href="votes.html">Votez</a>
           <a data-phase-visible="billetterie" href="resultats.html">Résultats</a>
           <a data-phase-visible="billetterie" href="billetterie.html">Billetterie</a>
@@ -256,8 +269,8 @@
       </div>
     </footer>
 
-    <script defer src="assets/js/site-config.js?v=20260818-02"></script>
-    <script defer src="assets/js/phase-router.js?v=20260818-01"></script>
+    <script defer src="assets/js/site-config.js?v=20260925-01"></script>
+    <script defer src="assets/js/phase-router.js?v=20260925-01"></script>
     <script defer src="assets/js/main.js?v=20260313-15"></script>
   </body>
 </html>

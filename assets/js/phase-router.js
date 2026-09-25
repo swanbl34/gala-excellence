@@ -1,7 +1,8 @@
-// Change this value to 0, 1, 2, or 3 depending on the current site phase.
+// Change this value to 0, 1, 2, 3 or 4 depending on the current site phase.
 // 0 keeps the full site visible.
-var PHASE = 3;
-var PHASE_LINK_VERSION = "20260818-01";
+// 1 candidature / 2 vote / 3 billetterie / 4 après-événement (archive + photos).
+var PHASE = 4;
+var PHASE_LINK_VERSION = "20260925-01";
 
 (function () {
   "use strict";
@@ -12,6 +13,7 @@ var PHASE_LINK_VERSION = "20260818-01";
     candidats: "candidats.html",
     votes: "votes.html",
     resultats: "resultats.html",
+    photos: "photos.html",
     billetterie: "billetterie.html",
     cashless: "cashless.html",
     contact: "contact.html"
@@ -22,6 +24,9 @@ var PHASE_LINK_VERSION = "20260818-01";
     "votez.html": ROUTES.votes
   };
 
+  // allowed : pages atteignables pendant la phase.
+  // closed  : pages encore atteignables (anciens liens, favoris) mais retirées
+  //           de la navigation et affichées dans leur état « fermé ».
   const PHASE_RULES = {
     0: {
       home: null,
@@ -30,22 +35,39 @@ var PHASE_LINK_VERSION = "20260818-01";
         ROUTES.candidats,
         ROUTES.votes,
         ROUTES.resultats,
+        ROUTES.photos,
         ROUTES.billetterie,
         ROUTES.cashless,
         ROUTES.contact
-      ])
+      ]),
+      closed: new Set()
     },
     1: {
       home: null,
-      allowed: new Set([ROUTES.candidatures, ROUTES.billetterie, ROUTES.contact])
+      allowed: new Set([ROUTES.candidatures, ROUTES.billetterie, ROUTES.contact]),
+      closed: new Set()
     },
     2: {
       home: null,
-      allowed: new Set([ROUTES.candidats, ROUTES.votes, ROUTES.billetterie, ROUTES.contact])
+      allowed: new Set([ROUTES.candidats, ROUTES.votes, ROUTES.billetterie, ROUTES.contact]),
+      closed: new Set()
     },
     3: {
       home: null,
-      allowed: new Set([ROUTES.candidats, ROUTES.resultats, ROUTES.billetterie, ROUTES.cashless, ROUTES.contact])
+      allowed: new Set([ROUTES.candidats, ROUTES.resultats, ROUTES.billetterie, ROUTES.cashless, ROUTES.contact]),
+      closed: new Set()
+    },
+    4: {
+      home: null,
+      allowed: new Set([
+        ROUTES.candidats,
+        ROUTES.resultats,
+        ROUTES.photos,
+        ROUTES.cashless,
+        ROUTES.contact,
+        ROUTES.billetterie
+      ]),
+      closed: new Set([ROUTES.billetterie])
     }
   };
 
@@ -54,6 +76,7 @@ var PHASE_LINK_VERSION = "20260818-01";
     ROUTES.candidats,
     ROUTES.votes,
     ROUTES.resultats,
+    ROUTES.photos,
     ROUTES.billetterie,
     ROUTES.cashless,
     ROUTES.contact
@@ -86,11 +109,17 @@ var PHASE_LINK_VERSION = "20260818-01";
   }
 
   function isAllowedPage(pageName) {
-    const canonicalPageName = getCanonicalPageName(pageName);
-    if (canonicalPageName === ROUTES.billetterie) {
-      return true;
-    }
-    return phaseSettings.allowed.has(canonicalPageName);
+    return phaseSettings.allowed.has(getCanonicalPageName(pageName));
+  }
+
+  function isClosedPage(pageName) {
+    return phaseSettings.closed.has(getCanonicalPageName(pageName));
+  }
+
+  // Un lien n'est affiché que si la page est ouverte : une page « closed »
+  // reste accessible en direct mais disparaît des menus.
+  function isLinkedPage(pageName) {
+    return isAllowedPage(pageName) && !isClosedPage(pageName);
   }
 
   function redirectTo(pageName) {
@@ -108,6 +137,28 @@ var PHASE_LINK_VERSION = "20260818-01";
 
     element.setAttribute("aria-hidden", "true");
     element.style.setProperty("display", "none", "important");
+  }
+
+  function hasPhaseContentRule(element) {
+    return element.hasAttribute("data-phase-only") || element.hasAttribute("data-phase-not");
+  }
+
+  function matchesPhaseList(value) {
+    return String(value || "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .includes(String(currentPhase));
+  }
+
+  // Contenu conditionnel dans une page : data-phase-only="4" / data-phase-not="4".
+  function applyPhaseContent() {
+    document.querySelectorAll("[data-phase-only]").forEach((element) => {
+      setVisibility(element, matchesPhaseList(element.getAttribute("data-phase-only")));
+    });
+
+    document.querySelectorAll("[data-phase-not]").forEach((element) => {
+      setVisibility(element, !matchesPhaseList(element.getAttribute("data-phase-not")));
+    });
   }
 
   function normalizeLink(link) {
@@ -143,7 +194,16 @@ var PHASE_LINK_VERSION = "20260818-01";
     document.querySelectorAll("a[href]").forEach((link) => {
       const canonicalPageName = normalizeLink(link);
       if (!canonicalPageName || !MANAGED_PAGES.has(canonicalPageName)) return;
-      setVisibility(link, isAllowedPage(canonicalPageName));
+
+      if (!isLinkedPage(canonicalPageName)) {
+        setVisibility(link, false);
+        return;
+      }
+
+      // Un data-phase-only/not déjà appliqué reste prioritaire.
+      if (!hasPhaseContentRule(link)) {
+        setVisibility(link, true);
+      }
     });
   }
 
@@ -167,7 +227,15 @@ var PHASE_LINK_VERSION = "20260818-01";
   })();
 
   document.addEventListener("DOMContentLoaded", () => {
+    const canonicalPageName = getCanonicalPageName(getCurrentPageName());
+
     document.documentElement.setAttribute("data-phase", String(currentPhase));
+    document.documentElement.setAttribute(
+      "data-page-state",
+      isClosedPage(canonicalPageName) ? "closed" : "open"
+    );
+
+    applyPhaseContent();
     updateManagedLinks();
   });
 })();
