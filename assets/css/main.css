@@ -2143,114 +2143,337 @@ html:not([data-phase]) [data-phase-only] {
   background: linear-gradient(90deg, var(--gold), var(--rose));
 }
 
-.album-grid {
-  margin-top: 1.1rem;
+
+/* ==========================================================================
+   Photothèque : sommaire, grilles de vignettes, visionneuse plein écran
+   ========================================================================== */
+
+.gallery-layout {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
 }
 
-.album-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.album-index {
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding: 1.1rem 1.2rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: linear-gradient(150deg, rgba(138, 100, 255, 0.14), rgba(77, 132, 255, 0.09));
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(20, 11, 54, 0.55);
+  scrollbar-width: thin;
 }
 
-.album-card-media {
-  margin: 0;
-  position: relative;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  background: rgba(20, 11, 54, 0.6);
+.album-index-group + .album-index-group {
+  margin-top: 1.1rem;
 }
 
-.album-card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.album-card-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 5, 30, 0.55), transparent 55%);
-  pointer-events: none;
-}
-
-.album-card:hover .album-card-media img,
-.album-card:focus-visible .album-card-media img {
-  transform: scale(1.05);
-}
-
-.album-card-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 0.55rem;
-  padding: 1.05rem 1.15rem 1.15rem;
-}
-
-.album-card:hover,
-.album-card:focus-visible {
-  transform: translateY(-4px);
-  border-color: rgba(240, 204, 121, 0.55);
-  box-shadow: var(--shadow);
-}
-
-.album-card-index {
+.album-index-label {
+  margin: 0 0 0.5rem;
   font-family: "Space Grotesk", "Manrope", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
-.album-card h3 {
+.album-index ul {
   margin: 0;
-  font-family: "Space Grotesk", "Manrope", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.35;
+  padding: 0;
+  list-style: none;
 }
 
-.album-card-action {
-  margin-top: auto;
-  display: inline-flex;
+.album-index li + li {
+  margin-top: 0.15rem;
+}
+
+.album-index a {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+  gap: 0.45rem;
+  align-items: baseline;
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  color: var(--muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.album-index a:hover,
+.album-index a:focus-visible {
+  background: rgba(138, 100, 255, 0.2);
+  color: var(--text);
+}
+
+.album-index a span {
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.album-index a em {
+  font-style: normal;
+  font-size: 0.76rem;
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.album-section {
+  scroll-margin-top: 1.5rem;
+}
+
+.album-section + .album-group-title {
+  margin-top: 2.6rem;
+}
+
+.album-section + .album-section {
+  margin-top: 2.2rem;
+}
+
+.album-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.album-section-title {
+  margin: 0.25rem 0 0;
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
+.album-section-meta {
+  display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
+}
+
+.album-source {
+  font-size: 0.82rem;
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.6rem;
+}
+
+.photo-tile {
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(208, 191, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(20, 11, 54, 0.5);
+  aspect-ratio: 3 / 2;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.photo-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-tile:hover,
+.photo-tile:focus-visible {
+  transform: scale(1.03);
+  border-color: rgba(240, 204, 121, 0.65);
+  outline: none;
+}
+
+/* --- visionneuse --- */
+
+body.viewer-open {
+  overflow: hidden;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  background: rgba(6, 3, 20, 0.96);
+  backdrop-filter: blur(6px);
+}
+
+.viewer-stage {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 3.2rem 4.5rem 0.75rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Un max-height en pourcentage ne se résout pas dans une piste de grille
+   indéfinie : on contraint l'image en unités viewport. */
+.viewer-image {
+  max-width: calc(100vw - 9rem);
+  max-height: calc(100vh - 9rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+
+.viewer-close,
+.viewer-nav {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: rgba(20, 11, 54, 0.75);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.viewer-close:hover,
+.viewer-nav:hover {
+  background: rgba(138, 100, 255, 0.5);
+}
+
+.viewer-close {
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.viewer-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 2.1rem;
+  line-height: 1;
+  padding-bottom: 4px;
+}
+
+.viewer-nav:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.viewer-nav--prev {
+  left: 1rem;
+}
+
+.viewer-nav--next {
+  right: 1rem;
+}
+
+.viewer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem 1.15rem;
+  border-top: 1px solid rgba(208, 191, 255, 0.16);
+}
+
+.viewer-caption {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.viewer-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.viewer-counter {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.viewer-download {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.86rem;
   font-weight: 600;
-  font-size: 0.92rem;
   color: var(--gold-soft);
 }
 
-.album-card-action::after {
-  content: "→";
-  transition: transform 0.25s ease;
-}
-
-.album-card:hover .album-card-action::after,
-.album-card:focus-visible .album-card-action::after {
-  transform: translateX(4px);
+.viewer-download:hover {
+  background: rgba(138, 100, 255, 0.28);
 }
 
 @media (max-width: 1060px) {
-  .album-grid {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .album-index {
+    position: static;
+    max-height: none;
+  }
+
+  .album-index ul {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.15rem 0.5rem;
   }
 }
 
 @media (max-width: 640px) {
-  .album-grid {
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 0.45rem;
+  }
+
+  .album-index ul {
     grid-template-columns: 1fr;
   }
 
-  .album-card-body {
-    padding: 0.95rem 1rem 1.05rem;
+  .viewer-stage {
+    padding: 3.2rem 0.5rem 0.5rem;
+  }
+
+  .viewer-image {
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 8rem);
+  }
+
+  .viewer-nav {
+    width: 42px;
+    height: 42px;
+    font-size: 1.7rem;
+    bottom: auto;
+  }
+
+  .viewer-nav--prev {
+    left: 0.4rem;
+  }
+
+  .viewer-nav--next {
+    right: 0.4rem;
+  }
+
+  .viewer-bar {
+    padding: 0.7rem 1rem 1rem;
   }
 }
