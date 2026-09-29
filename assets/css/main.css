@@ -2300,6 +2300,12 @@ body.viewer-open {
   overflow: hidden;
 }
 
+/* display:grid l'emporterait sur le display:none que le navigateur applique
+   à l'attribut hidden : la visionneuse ne se fermerait jamais. */
+.viewer[hidden] {
+  display: none;
+}
+
 .viewer {
   position: fixed;
   inset: 0;
